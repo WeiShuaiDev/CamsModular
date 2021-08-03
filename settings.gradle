@@ -1,15 +1,17 @@
 rootProject.name = "CamsModular"
-include ':app'
-include ':cams-module-login'
-include ':cams-module-mine'
-include ':cams-module-home'
-include ':cams-module-project'
-include ':cams-module-public'
-include ':cams-module-square'
-include ':cams-module-main'
-include ':cams-service-home'
-include ':cams-service-login'
-include ':cams-service-mine'
-include ':cams-service-project'
-include ':cams-service-public'
-include ':cams-service-square'
+include ':app',
+
+        ':cams-module-login',
+        ':cams-module-mine',
+        ':cams-module-home',
+        ':cams-module-project',
+        ':cams-module-public',
+        ':cams-module-square',
+        ':cams-module-main',
+
+        ':cams-service-home',
+        ':cams-service-login',
+        ':cams-service-mine',
+        ':cams-service-project',
+        ':cams-service-public',
+        ':cams-service-square'

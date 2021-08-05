@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HomeModuleAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/home_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/home_colorPrimaryDark</item>
+        <item name="colorAccent">@color/home_colorAccent</item>
+    </style>
+</resources>

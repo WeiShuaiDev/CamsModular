@@ -2,7 +2,6 @@ package com.linwei.camsmodular
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import com.linwei.camsmodular.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

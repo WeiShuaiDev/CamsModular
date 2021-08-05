@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PublisModuleAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/publis_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/publis_colorPrimaryDark</item>
+        <item name="colorAccent">@color/publis_colorAccent</item>
+    </style>
+</resources>

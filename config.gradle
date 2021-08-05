@@ -9,16 +9,20 @@ ext {
     ]
 
     version = [
-            appcompat      : "1.2.0",
-            material       : "1.2.1",
-            retrofitVersion: "2.9.0",
-            okHttpVersion  : "3.7.0"
+            appcompatVersion       : "1.2.0",
+            materialVersion        : "1.2.1",
+            constraintlayoutVersion: "2.0.4",
+            retrofitVersion        : "2.9.0",
+            okHttpVersion          : "3.7.0",
+            arouterVersion         : "1.5.2",
     ]
 
     dependencies = [
-            //Android
-            "appcompat"                   : "androidx.appcompat:appcompat:${version.appcompat}",
-            "material"                    : "com.google.android.material:material:${version.material}",
+            //AndroidX
+            "appcompat"                   : "androidx.appcompat:appcompat:${version.appcompatVersion}",
+            "material"                    : "com.google.android.material:material:${version.materialVersion}",
+            "constraintlayout"            : "androidx.constraintlayout:constraintlayout:${version.constraintlayoutVersion}",
+            "core-ktx"                    : "androidx.core:core-ktx:1.3.1",
 
             //Retrofit
             "retrofit"                    : "com.squareup.retrofit2:retrofit:${version.retrofitVersion}",
@@ -28,7 +32,17 @@ ext {
             "okhttp3"                     : "com.squareup.okhttp3:okhttp:${version.okHttpVersion}",
             "okhttp3-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:${version.okHttpVersion}",
 
+            //ARouter
+            "arouter-api"                 : "com.alibaba:arouter-api:${version.arouterVersion}",
+            "arouter-compiler"            : "com.alibaba:arouter-compiler:${version.arouterVersion}",
+
+            //Utils
             "fastjson"                    : "com.alibaba:fastjson:1.2.73",
             "retrofit2-fastjson-converter": "com.github.BaronZ88:Retrofit2-FastJson-Converter:1.2",
+
+            //Test
+            "junit"                       : "junit:junit:4.13.2",
+            "test-junit"                  : "androidx.test.ext:junit:1.1.2",
+            "espresso-core"               : "androidx.test.espresso:espresso-core:3.3.0"
     ]
 }

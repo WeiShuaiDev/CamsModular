@@ -1,0 +1,5 @@
+<resources>
+    <string name="login_app_name">cams-module-login</string>
+    <string name="login_module_page">login</string>
+
+</resources>

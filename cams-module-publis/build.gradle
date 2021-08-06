@@ -67,7 +67,7 @@ dependencies {
     implementation project(path: ':cams-service-login')
     implementation project(path: ':cams-service-mine')
     implementation project(path: ':cams-service-project')
-    implementation project(path: ':cams-service-public')
+    implementation project(path: ':cams-service-publis')
     implementation project(path: ':cams-service-square')
 
     testImplementation rootProject.ext.dependencies["junit"]

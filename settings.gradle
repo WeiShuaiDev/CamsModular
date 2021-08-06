@@ -1,6 +1,5 @@
 rootProject.name = "CamsModular"
-include ':app',
-        ':cams-module-login',
+include':cams-module-login',
         ':cams-module-mine',
         ':cams-module-home',
         ':cams-module-project',
@@ -14,6 +13,7 @@ include ':app',
         ':cams-service-publis',
         ':cams-service-square',
         ':cams-service-base',
-        ':cams-component-network'
-include ':cams-component-database'
-include ':cams-component-common'
+
+        ':cams-component-network',
+        ':cams-component-database',
+        ':cams-component-common'

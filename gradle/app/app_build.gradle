@@ -1,0 +1,87 @@
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd_HHmmss", TimeZone.getTimeZone("GMT+8"))
+}
+
+android {
+    signingConfigs {
+        debug {
+        }
+        release {
+        }
+    }
+    buildTypes {
+        debug {
+            //是否优化zip
+            zipAlignEnabled true
+            //移除无用的resource文件
+            shrinkResources false
+            //启动代码混淆
+            minifyEnabled false
+            //指定签名文件位置
+            signingConfig signingConfigs.debug
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+        preview  {
+            //是否优化zip
+            zipAlignEnabled true
+            //移除无用的resource文件
+            shrinkResources false
+            //启动代码混淆
+            minifyEnabled false
+            //指定签名文件位置
+            signingConfig signingConfigs.debug
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+        release {
+            debuggable false
+            //是否优化zip
+            zipAlignEnabled true
+            //移除无用的resource文件
+            shrinkResources false
+            //启动代码混淆
+            minifyEnabled false
+            //指定签名文件位置
+            signingConfig signingConfigs.release
+            //混淆规则配置文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = outputFile.name.replace(".apk",
+                            "-${defaultConfig.versionName}_${releaseTime()}.apk")
+                    output.outputFileName = fileName
+                }
+            }
+        }
+    }
+
+    File propFile = file('/data/apk/properties/signing_as.properties')
+
+    //  本地签名文件配置
+    if (propFile.exists()) {
+        Properties props = new Properties()
+        props.load(new FileInputStream(propFile))
+        if (props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+                props.containsKey('KEY_ALIAS') &&
+                props.containsKey('KEY_PASSWORD')) {
+            android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+            android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+            android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+            android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+
+            android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
+            android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
+            android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
+            android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
+        } else {
+            android.buildTypes.release.signingConfig = null
+            android.buildTypes.debug.signingConfig = null
+        }
+    } else {
+        android.buildTypes.release.signingConfig = null
+        android.buildTypes.debug.signingConfig = null
+    }
+}

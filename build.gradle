@@ -44,10 +44,6 @@ allprojects {
 
 dependencies {
     implementation project(path: ':cams-module-home')
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation project(path: ':cams-module-login')
     implementation project(path: ':cams-module-mine')
     implementation project(path: ':cams-module-project')

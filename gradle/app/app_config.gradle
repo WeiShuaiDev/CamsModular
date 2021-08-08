@@ -42,7 +42,6 @@ android {
         release.setRoot('build-types/release')
     }
 
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -71,7 +70,6 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    //api 'com.android.support:multidex:1.0.1'
     implementation rootProject.ext.dependencies["core-ktx"]
     implementation rootProject.ext.dependencies["appcompat"]
     implementation rootProject.ext.dependencies["material"]

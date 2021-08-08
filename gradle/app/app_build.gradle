@@ -3,12 +3,31 @@ static def releaseTime() {
 }
 
 android {
+    defaultConfig {
+        applicationId "com.linwei.camsmodular"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
     signingConfigs {
         debug {
+            keyAlias "${SIGNING_KEYALIAS}"
+            keyPassword "${SIGNGING_CERTIFICATEPASSWORD}"
+            storeFile file("${SIGNING_CERTIFICATE}")
+            storePassword "${SIGNGING_STOREPASSWORD}"
         }
         release {
+            keyAlias "${SIGNING_KEYALIAS}"
+            keyPassword "${SIGNGING_CERTIFICATEPASSWORD}"
+            storeFile file("${SIGNING_CERTIFICATE}")
+            storePassword "${SIGNGING_STOREPASSWORD}"
         }
     }
+
     buildTypes {
         debug {
             //是否优化zip
@@ -58,30 +77,30 @@ android {
         }
     }
 
-    File propFile = file('/data/apk/properties/signing_as.properties')
+//    File propFile = file('/data/apk/properties/signing_as.properties')
 
-    //  本地签名文件配置
-    if (propFile.exists()) {
-        Properties props = new Properties()
-        props.load(new FileInputStream(propFile))
-        if (props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
-                props.containsKey('KEY_ALIAS') &&
-                props.containsKey('KEY_PASSWORD')) {
-            android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
-            android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
-            android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
-            android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
-
-            android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
-            android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
-            android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
-            android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
-        } else {
-            android.buildTypes.release.signingConfig = null
-            android.buildTypes.debug.signingConfig = null
-        }
-    } else {
-        android.buildTypes.release.signingConfig = null
-        android.buildTypes.debug.signingConfig = null
-    }
+//     本地签名文件配置
+//    if (propFile.exists()) {
+//        Properties props = new Properties()
+//        props.load(new FileInputStream(propFile))
+//        if (props.containsKey('SIGNING_CERTIFICATE') && props.containsKey('SIGNGING_STOREPASSWORD') &&
+//                props.containsKey('SIGNGING_CERTIFICATEPASSWORD') &&
+//                props.containsKey('SIGNING_KEYALIAS')) {
+//            android.signingConfigs.release.storeFile = file(props['SIGNING_CERTIFICATE'])
+//            android.signingConfigs.release.storePassword = props['SIGNGING_STOREPASSWORD']
+//            android.signingConfigs.release.keyAlias = props['SIGNING_KEYALIAS']
+//            android.signingConfigs.release.keyPassword = props['SIGNGING_CERTIFICATEPASSWORD']
+//
+//            android.signingConfigs.debug.storeFile = file(props['SIGNING_CERTIFICATE'])
+//            android.signingConfigs.debug.storePassword = props['SIGNGING_STOREPASSWORD']
+//            android.signingConfigs.debug.keyAlias = props['SIGNING_KEYALIAS']
+//            android.signingConfigs.debug.keyPassword = props['SIGNGING_CERTIFICATEPASSWORD']
+//        } else {
+//            android.buildTypes.release.signingConfig = null
+//            android.buildTypes.debug.signingConfig = null
+//        }
+//    } else {
+//        android.buildTypes.release.signingConfig = null
+//        android.buildTypes.debug.signingConfig = null
+//    }
 }

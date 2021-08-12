@@ -1,5 +1,15 @@
 apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
+    api rootProject.ext.dependencies["fastjson"]
 
+    api rootProject.ext.dependencies["rxlifecycle3"]
+    api rootProject.ext.dependencies["rxlifecycle3-kotlin"]
+    api rootProject.ext.dependencies["rxlifecycle3-components"]
+
+    api rootProject.ext.dependencies["rxjava3"]
+    api rootProject.ext.dependencies["rxandroid3"]
+    api rootProject.ext.dependencies["rxkotlin3"]
+
+    implementation project(':cams-component-common')
 }

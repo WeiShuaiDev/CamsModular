@@ -1,5 +1,5 @@
 apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
-
+    implementation project(':cams-component-common')
 }

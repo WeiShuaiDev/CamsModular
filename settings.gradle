@@ -16,4 +16,6 @@ include':cams-module-login',
 
         ':cams-component-network',
         ':cams-component-database',
-        ':cams-component-common'
+        ':cams-component-common',
+        ':cams-component-image',
+        ':cams-component-queque'

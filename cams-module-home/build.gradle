@@ -11,4 +11,9 @@ dependencies {
     implementation project(path: ':cams-service-project')
     implementation project(path: ':cams-service-publis')
     implementation project(path: ':cams-service-square')
+
+    implementation project(path: ':cams-component-cache')
+    implementation project(path: ':cams-component-database')
+    implementation project(path: ':cams-component-image')
+    implementation project(path: ':cams-component-network')
 }

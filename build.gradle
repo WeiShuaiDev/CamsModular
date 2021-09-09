@@ -43,6 +43,8 @@ allprojects {
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     implementation project(path: ':cams-module-home')
     implementation project(path: ':cams-module-login')
     implementation project(path: ':cams-module-mine')

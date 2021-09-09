@@ -14,11 +14,4 @@ class ApiClient private constructor() {
             }
         }
     }
-
-    init {
-
-
-    }
-
-
 }

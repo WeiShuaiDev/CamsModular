@@ -64,6 +64,7 @@ dependencies {
     implementation rootProject.ext.dependencies["material"]
 
     implementation rootProject.ext.dependencies["constraintlayout"]
+
     /*ARouter*/
     implementation rootProject.ext.dependencies["arouter-api"]
     kapt rootProject.ext.dependencies["arouter-compiler"]

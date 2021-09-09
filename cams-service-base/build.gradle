@@ -1,7 +1,4 @@
-plugins {
-    id 'java-library'
-}
-
+apply plugin: 'java-library'
 dependencies {
 }
 

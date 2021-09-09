@@ -18,4 +18,4 @@ include':cams-module-login',
         ':cams-component-database',
         ':cams-component-common',
         ':cams-component-image',
-        ':cams-component-queque'
+        ':cams-component-cache'

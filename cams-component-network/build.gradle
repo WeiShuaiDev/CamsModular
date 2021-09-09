@@ -4,6 +4,7 @@ dependencies {
     //Retrofit
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["adapter-rxjava"]
+
     //OKHttp
     api rootProject.ext.dependencies["okhttp3"]
     api rootProject.ext.dependencies["okhttp3-logging-interceptor"]

@@ -1,4 +1,5 @@
 apply from: '../gradle/global_service_config.gradle'
 
 dependencies {
+    implementation project(':cams-component-common')
 }

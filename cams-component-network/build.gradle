@@ -9,5 +9,5 @@ dependencies {
     api rootProject.ext.dependencies["okhttp3"]
     api rootProject.ext.dependencies["okhttp3-logging-interceptor"]
 
-    implementation project(':cams-component-common')
+    api project(':cams-component-common')
 }

@@ -1,0 +1,20 @@
+apply from: '../gradle/global_module_config.gradle'
+android {
+    defaultConfig {
+        resourcePrefix "main_"
+    }
+}
+dependencies {
+    implementation project(path: ':cams-service-home')
+    implementation project(path: ':cams-service-login')
+    implementation project(path: ':cams-service-mine')
+    implementation project(path: ':cams-service-project')
+    implementation project(path: ':cams-service-publis')
+    implementation project(path: ':cams-service-square')
+
+    implementation project(path: ':cams-component-cache')
+    implementation project(path: ':cams-component-database')
+    implementation project(path: ':cams-component-image')
+    implementation project(path: ':cams-component-network')
+
+}

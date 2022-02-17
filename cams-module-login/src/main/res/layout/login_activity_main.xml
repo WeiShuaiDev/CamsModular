@@ -7,4 +7,12 @@
     tools:context=".MainActivity"
     tools:ignore="ResourceName">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Module Login Main Activity"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.linwei.cams.module.publis.MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Module Publis Main Activity"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

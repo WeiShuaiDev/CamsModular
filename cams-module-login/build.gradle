@@ -16,4 +16,5 @@ dependencies {
     implementation project(path: ':cams-component-database')
     implementation project(path: ':cams-component-image')
     implementation project(path: ':cams-component-network')
+
 }

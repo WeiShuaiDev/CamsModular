@@ -3,14 +3,14 @@
     package="com.linwei.cams.module.home">
 
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name=".HomeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/home_ic_launcher"
         android:label="@string/home_app_name"
         android:supportsRtl="true"
         android:theme="@style/HomeModuleAppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.HomeActivity"
             android:exported="true"
             android:label="@string/home_module_page">
             <intent-filter>

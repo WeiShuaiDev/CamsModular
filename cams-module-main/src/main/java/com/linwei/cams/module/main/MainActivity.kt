@@ -1,11 +1,8 @@
 package com.linwei.cams.module.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.linwei.cams.component.common.base.CommonBaseActivity
+import com.linwei.cams.module.main.databinding.MainActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity_main)
-    }
+class MainActivity : CommonBaseActivity<MainActivityMainBinding>() {
 }

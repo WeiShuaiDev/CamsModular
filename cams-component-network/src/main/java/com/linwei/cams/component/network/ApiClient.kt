@@ -1,17 +1,16 @@
 package com.linwei.cams.component.network
 
 import com.linwei.cams.component.network.configuration.ApiConfiguration
-import com.linwei.cams.component.network.converter.FastJsonConverterFactory
 import com.linwei.cams.component.network.intercepter.SignInterceptor
 import com.linwei.cams.component.network.service.ServiceWrap
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import java.util.*
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class ApiClient private constructor(var apiConfiguration: ApiConfiguration) {
+class ApiClient private constructor(var apiConfiguration: ApiConfiguration?) {
 
     /**
      * OkHttpClient
@@ -39,7 +38,7 @@ class ApiClient private constructor(var apiConfiguration: ApiConfiguration) {
         private val WHITE_TIME_OUT: Long = 60
 
         @JvmStatic
-        fun getInstance(apiConfiguration: ApiConfiguration): ApiClient {
+        fun getInstance(apiConfiguration: ApiConfiguration?=null): ApiClient {
             return INSTANCE ?: ApiClient(apiConfiguration).apply {
                 INSTANCE = this
             }
@@ -63,7 +62,7 @@ class ApiClient private constructor(var apiConfiguration: ApiConfiguration) {
     /**
      * 获取Service Api
      */
-    fun <T> getService(proxy: ServiceWrap<T>): T? {
+    fun <T> getService(proxy: ServiceWrap<T>): T {
         val host = proxy.getHost()
         val serviceClass: Class<T> = proxy.fetchRealService()
 
@@ -72,15 +71,15 @@ class ApiClient private constructor(var apiConfiguration: ApiConfiguration) {
         if (mApiServiceMap.containsKey(key)) {
             mApiServiceMap.get(key)?.let {
                 if (serviceClass.isInstance(it)) {
-                    return serviceClass.cast(it)
+                    return serviceClass.cast(it)!!
                 }
             }
         }
 
         val retrofit = Retrofit.Builder()
             .baseUrl(host)
-            .addConverterFactory(FastJsonConverterFactory.create())
-            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.createSynchronous())
             .client(mOkHttpClient)
             .build()
 

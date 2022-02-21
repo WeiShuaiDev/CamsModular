@@ -1,19 +1,47 @@
 package com.linwei.camsmodular
 
-import android.app.Application
+import android.content.Context
 import androidx.multidex.MultiDex
+import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
-import com.linwei.cams.component.network.ApiClient
-import com.linwei.cams.component.network.configuration.ApiConfiguration
+import com.linwei.cams.module.home.HomeApplicationDelegate
 
-class CamsApplication : Application() {
+class CamsApplication : MultiDexApplication() {
+
+    private val mHomeApplicationDelegate by lazy {
+        HomeApplicationDelegate()
+    }
+
+    override fun attachBaseContext(context: Context) {
+        super.attachBaseContext(context)
+        mHomeApplicationDelegate.attachBaseContext(context)
+    }
 
     override fun onCreate() {
         super.onCreate()
-
         MultiDex.install(this)
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
         ARouter.init(this)
 
-        //ApiClient.getInstance(ApiConfiguration.builder().build())
+        mHomeApplicationDelegate.onCreate(this)
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        mHomeApplicationDelegate.onTrimMemory(level)
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        ARouter.getInstance().destroy()
+        mHomeApplicationDelegate.onTerminate(this)
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mHomeApplicationDelegate.onLowMemory(this)
     }
 }

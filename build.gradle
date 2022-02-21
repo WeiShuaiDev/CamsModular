@@ -16,7 +16,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:7.1.1'
         classpath "com.alibaba:arouter-register:$arouter_register_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
@@ -45,14 +45,13 @@ allprojects {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation project(path: ':cams-component-common')
-    implementation project(path: ':cams-component-network')
+    implementation project(':cams-component-network')
 
-    implementation project(path: ':cams-module-main')
-    implementation project(path: ':cams-module-home')
-    implementation project(path: ':cams-module-login')
-    implementation project(path: ':cams-module-mine')
-    implementation project(path: ':cams-module-project')
-    implementation project(path: ':cams-module-publis')
-    implementation project(path: ':cams-module-square')
+    implementation project(':cams-module-main')
+    implementation project(':cams-module-home')
+    implementation project(':cams-module-login')
+    implementation project(':cams-module-mine')
+    implementation project(':cams-module-project')
+    implementation project(':cams-module-publis')
+    implementation project(':cams-module-square')
 }

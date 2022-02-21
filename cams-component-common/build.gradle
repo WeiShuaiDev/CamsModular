@@ -1,9 +1,9 @@
 apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
-    api rootProject.ext.dependencies["fastjson"]
-
     api rootProject.ext.dependencies["multidex"]
+
+    api rootProject.ext.dependencies["arouter-api"]
 
     api rootProject.ext.dependencies["rxlifecycle3"]
     api rootProject.ext.dependencies["rxlifecycle3-kotlin"]

@@ -5,6 +5,7 @@ if (isBuildModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -64,6 +65,10 @@ android {
         jvmTarget = '1.8'
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildscript {
         repositories {
             mavenCentral()
@@ -79,6 +84,7 @@ dependencies {
     implementation rootProject.ext.dependencies["material"]
 
     implementation rootProject.ext.dependencies["constraintlayout"]
+
     /*ARouter*/
     implementation rootProject.ext.dependencies["arouter-api"]
     kapt rootProject.ext.dependencies["arouter-compiler"]

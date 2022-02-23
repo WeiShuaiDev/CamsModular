@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.alibaba.android.arouter.launcher.ARouter
+import com.linwei.cams.component.common.opensource.ARouterManager
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.ParameterizedType
 
@@ -20,11 +20,12 @@ abstract class CommonBaseActivity<T : ViewBinding> : AppCompatActivity() {
         onBeforeCreateExpand(savedInstanceState)
         super.onCreate(savedInstanceState)
         onCreateExpand()
+
+        routerInjectBinding()
+
         viewBindingLogic().takeIf { true }?.apply {
             setContentView(this)
         } ?: setContentView(getRootLayoutId())
-
-        routerBindingLogic()
 
         initView()
         initData()
@@ -51,24 +52,25 @@ abstract class CommonBaseActivity<T : ViewBinding> : AppCompatActivity() {
         return null
     }
 
-    private fun routerBindingLogic() {
-        hasARouter().takeIf { true }?.apply {
-            ARouter.getInstance().inject(this)
+    private fun routerInjectBinding() {
+        hasInjectARouter().takeIf { true }.apply {
+            ARouterManager.inject(this@CommonBaseActivity)
         }
     }
 
-    protected open fun hasARouter(): Boolean = false
-
     protected open fun getRootLayoutId(): Int = -1
+
+    protected open fun hasInjectARouter(): Boolean = false
 
     protected open fun onBeforeCreateExpand(savedInstanceState: Bundle?) {
     }
 
     protected open fun onCreateExpand() {}
 
-    protected abstract fun initEvent()
+    protected abstract fun initView()
 
     protected abstract fun initData()
 
-    protected abstract fun initView()
+    protected abstract fun initEvent()
+
 }

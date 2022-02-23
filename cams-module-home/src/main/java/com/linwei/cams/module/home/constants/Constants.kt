@@ -1,4 +1,4 @@
-package com.linwei.cams.module.home
+package com.linwei.cams.module.home.constants
 
 object Service {
     //模块ID

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.alibaba.android.arouter.launcher.ARouter
+import com.linwei.cams.component.common.opensource.ARouterManager
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.ParameterizedType
 
@@ -44,7 +44,7 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        routerBindingLogic()
+        routerInjectBinding()
     }
 
     /**
@@ -61,7 +61,7 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
                 Boolean::class.javaPrimitiveType
             )
             mViewBinding = inflate.invoke(null, inflater, container, false) as T
-            return mViewBinding.getRoot()
+            return mViewBinding.root
         } catch (e: NoSuchMethodException) {
             e.printStackTrace()
         } catch (e: IllegalAccessException) {
@@ -72,13 +72,15 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
         return null
     }
 
-    private fun routerBindingLogic() {
-        hasARouter().takeIf { true }?.apply {
-            ARouter.getInstance().inject(this)
+    private fun routerInjectBinding() {
+        hasInjectARouter().takeIf { true }.apply {
+            activity?.let {
+                ARouterManager.inject(it)
+            }
         }
     }
 
-    protected open fun hasARouter(): Boolean = false
+    protected open fun hasInjectARouter(): Boolean = false
 
     protected open fun getRootLayoutId(): Int = -1
 
@@ -89,9 +91,9 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
     ) {
     }
 
-    protected abstract fun initEvent()
+    protected abstract fun initView()
 
     protected abstract fun initData()
 
-    protected abstract fun initView()
+    protected abstract fun initEvent()
 }

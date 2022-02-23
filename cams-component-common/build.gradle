@@ -1,6 +1,12 @@
 apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
+    api rootProject.ext.dependencies["core-ktx"]
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["material"]
+
+    api rootProject.ext.dependencies["constraintlayout"]
+
     api rootProject.ext.dependencies["multidex"]
 
     api rootProject.ext.dependencies["arouter-api"]

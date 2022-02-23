@@ -5,16 +5,16 @@ android {
     }
 }
 dependencies {
-    implementation project(path: ':cams-service-home')
-    implementation project(path: ':cams-service-login')
-    implementation project(path: ':cams-service-mine')
-    implementation project(path: ':cams-service-project')
-    implementation project(path: ':cams-service-publis')
-    implementation project(path: ':cams-service-square')
+    implementation project(':cams-service-home')
+    implementation project(':cams-service-login')
+    implementation project(':cams-service-mine')
+    implementation project(':cams-service-project')
+    implementation project(':cams-service-publis')
+    implementation project(':cams-service-square')
 
-    implementation project(path: ':cams-component-cache')
-    implementation project(path: ':cams-component-database')
-    implementation project(path: ':cams-component-image')
-    implementation project(path: ':cams-component-network')
+    implementation project(':cams-component-cache')
+    implementation project(':cams-component-database')
+    implementation project(':cams-component-image')
+    implementation project(':cams-component-network')
 
 }

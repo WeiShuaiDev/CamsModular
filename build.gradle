@@ -44,9 +44,6 @@ allprojects {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-    implementation project(':cams-component-network')
-
     implementation project(':cams-module-main')
     implementation project(':cams-module-home')
     implementation project(':cams-module-login')
@@ -54,4 +51,9 @@ dependencies {
     implementation project(':cams-module-project')
     implementation project(':cams-module-publis')
     implementation project(':cams-module-square')
+
+    implementation project(':cams-component-cache')
+    implementation project(':cams-component-database')
+    implementation project(':cams-component-image')
+    implementation project(':cams-component-network')
 }

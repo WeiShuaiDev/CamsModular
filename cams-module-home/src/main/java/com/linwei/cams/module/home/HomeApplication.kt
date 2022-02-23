@@ -3,7 +3,7 @@ package com.linwei.cams.module.home
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.alibaba.android.arouter.launcher.ARouter
+import com.linwei.cams.component.common.opensource.ARouterManager
 
 class HomeApplication : Application() {
     private lateinit var mHomeApplicationDelegate: HomeApplicationDelegate
@@ -21,16 +21,13 @@ class HomeApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        ARouterManager.init(this)
         mHomeApplicationDelegate.onCreate(this)
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(this)
     }
 
     override fun onTerminate() {
         super.onTerminate()
+        ARouterManager.destroy()
         mHomeApplicationDelegate.onTerminate(this)
     }
 

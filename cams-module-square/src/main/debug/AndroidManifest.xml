@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/SquareModuleAppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.SquareActivity"
             android:exported="true"
             android:label="@string/square_module_page">
             <intent-filter>

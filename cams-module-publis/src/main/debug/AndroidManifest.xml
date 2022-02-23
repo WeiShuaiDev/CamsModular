@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/PublisModuleAppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.PublisActivity"
             android:exported="true"
             android:label="@string/publis_module_page">
             <intent-filter>

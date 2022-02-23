@@ -1,7 +1,7 @@
 package com.linwei.cams.module.home.http
 
 import com.linwei.cams.component.network.service.ServiceWrap
-import com.linwei.cams.module.home.Service
+import com.linwei.cams.module.home.constants.Service
 
 class ApiServiceWrap : ServiceWrap<ApiService> {
 

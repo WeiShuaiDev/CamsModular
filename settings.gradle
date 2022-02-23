@@ -20,6 +20,6 @@ include ':cams-module-login',
         ':cams-component-database',
         ':cams-component-image',
         ':cams-component-cache',
-        ':cams-component-mvp',
-        ':cams-component-mvvm'
+        ':cams-framework-mvp',
+        ':cams-framework-mvvm'
 

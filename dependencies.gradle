@@ -9,7 +9,6 @@ ext {
     ]
 
     version = [
-            kotlin_version         : "1.5.30",
             appcompatVersion       : "1.4.1",
             materialVersion        : "1.5.0",
             multidexVersion        : "2.0.0",

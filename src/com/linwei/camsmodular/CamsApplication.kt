@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
+import com.linwei.cams.component.common.opensource.ARouterManager
 import com.linwei.cams.module.home.HomeApplicationDelegate
 
 class CamsApplication : MultiDexApplication() {
@@ -20,11 +21,8 @@ class CamsApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         MultiDex.install(this)
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog()
-            ARouter.openDebug()
-        }
-        ARouter.init(this)
+
+        ARouterManager.init(this)
 
         mHomeApplicationDelegate.onCreate(this)
     }
@@ -36,7 +34,7 @@ class CamsApplication : MultiDexApplication() {
 
     override fun onTerminate() {
         super.onTerminate()
-        ARouter.getInstance().destroy()
+        ARouterManager.destroy()
         mHomeApplicationDelegate.onTerminate(this)
     }
 

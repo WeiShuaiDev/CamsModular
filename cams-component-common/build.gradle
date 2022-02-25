@@ -18,4 +18,13 @@ dependencies {
     api rootProject.ext.dependencies["rxjava3"]
     api rootProject.ext.dependencies["rxandroid3"]
     api rootProject.ext.dependencies["rxkotlin3"]
+
+    //ViewModel and LiveData
+    api rootProject.ext.dependencies["lifecycle-viewmodel-ktx"]
+    api rootProject.ext.dependencies["lifecycle-livedata-ktx"]
+    kapt rootProject.ext.dependencies["lifecycle-common-java8"]
+
+    //Coroutines
+    api rootProject.ext.dependencies["kotlinx-coroutines-core"]
+    api rootProject.ext.dependencies["kotlinx-coroutines-android"]
 }

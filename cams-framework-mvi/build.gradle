@@ -1,0 +1,5 @@
+apply from: '../gradle/global_component_config.gradle'
+
+dependencies {
+    api project(':cams-component-common')
+}

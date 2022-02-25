@@ -21,5 +21,6 @@ include ':cams-module-login',
         ':cams-component-image',
         ':cams-component-cache',
         ':cams-framework-mvp',
-        ':cams-framework-mvvm'
+        ':cams-framework-mvvm',
+        ':cams-framework-mvi'
 

@@ -6,7 +6,7 @@ import com.linwei.cams.component.common.base.CommonBaseActivity
 import com.linwei.cams.module.home.databinding.HomeActivityHomeBinding
 import com.linwei.cams.module.home.provider.HomeProviderImpl
 import com.linwei.cams.service.base.ErrorMessage
-import com.linwei.cams.service.base.ResponseCallback
+import com.linwei.cams.service.base.callback.ResponseCallback
 import com.linwei.cams.service.home.HomeRouterTable
 import com.linwei.cams.service.home.model.HomeBean
 

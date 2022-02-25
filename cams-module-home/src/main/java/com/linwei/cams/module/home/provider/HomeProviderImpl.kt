@@ -9,7 +9,7 @@ import com.linwei.cams.component.network.callback.RxJavaCallback
 import com.linwei.cams.component.network.ext.execute
 import com.linwei.cams.module.home.http.ApiServiceWrap
 import com.linwei.cams.service.base.ErrorMessage
-import com.linwei.cams.service.base.ResponseCallback
+import com.linwei.cams.service.base.callback.ResponseCallback
 import com.linwei.cams.service.home.HomeRouterTable
 import com.linwei.cams.service.home.model.HomeBean
 import com.linwei.cams.service.home.provider.HomeProvider

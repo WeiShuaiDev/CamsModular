@@ -1,5 +1,6 @@
 package com.linwei.cams.component.common.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,16 +11,18 @@ import com.linwei.cams.component.common.opensource.ARouterManager
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.ParameterizedType
 
-
 /**
  * 基类CommonBaseFragment
  */
-abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
+abstract class CommonBaseFragment<VB : ViewBinding> : Fragment() {
 
-    protected lateinit var mViewBinding: T
+    protected lateinit var mViewBinding: VB
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    protected lateinit var mContext: Context
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 
     override fun onCreateView(
@@ -37,6 +40,7 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        onViewCreatedExpand(view, savedInstanceState)
         initView()
         initData()
         initEvent()
@@ -50,6 +54,7 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
     /**
      * ViewBinding绑定逻辑
      */
+    @Suppress("UNCHECKED_CAST")
     private fun viewBindingLogic(inflater: LayoutInflater, container: ViewGroup?): View? {
         val type: ParameterizedType = javaClass.genericSuperclass as ParameterizedType
         try {
@@ -60,7 +65,7 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
                 ViewGroup::class.java,
                 Boolean::class.javaPrimitiveType
             )
-            mViewBinding = inflate.invoke(null, inflater, container, false) as T
+            mViewBinding = inflate.invoke(null, inflater, container, false) as VB
             return mViewBinding.root
         } catch (e: NoSuchMethodException) {
             e.printStackTrace()
@@ -96,4 +101,7 @@ abstract class CommonBaseFragment<T : ViewBinding> : Fragment() {
     protected abstract fun initData()
 
     protected abstract fun initEvent()
+
+    protected open fun onViewCreatedExpand(view: View, savedInstanceState: Bundle?) {
+    }
 }

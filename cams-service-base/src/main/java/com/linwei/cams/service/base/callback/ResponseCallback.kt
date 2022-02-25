@@ -1,4 +1,6 @@
-package com.linwei.cams.service.base
+package com.linwei.cams.service.base.callback
+
+import com.linwei.cams.service.base.ErrorMessage
 
 interface ResponseCallback<T> {
     /**

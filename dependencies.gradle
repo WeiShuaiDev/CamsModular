@@ -20,6 +20,10 @@ ext {
             rxjava3Version         : "3.0.4",
             rxkotlinVersion        : "3.0.0",
             rxandroidVersion       : "3.0.0",
+            coilVersion            : "1.4.0",
+            stateLayoutVersion     : "1.2.0",
+            lifecycleVersion       : "2.4.1",
+            coroutinesVersion      : "1.5.1"
     ]
 
     dependencies = [
@@ -57,6 +61,21 @@ ext {
 
             //----------------------------------------Utils---------------------------------------------------------------
             "multidex"                   : "com.android.support:multidex:${version.multidexVersion}",
+
+            //----------------------------------------Coil----------------------------------------------------------------
+            "coil"                       : "io.coil-kt:coil:${version.coilVersion}",
+
+            //----------------------------------------StateLayout---------------------------------------------------------
+            "stateLayout"                : "com.github.liangjingkanji:${version.stateLayoutVersion}",
+
+            //----------------------------------------Jetpack-------------------------------------------------------------
+            "lifecycle-viewmodel-ktx"    : "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycleVersion}",
+            "lifecycle-livedata-ktx"     : "androidx.lifecycle:lifecycle-livedata-ktx:${version.lifecycleVersion}",
+            "lifecycle-common-java8"     : "androidx.lifecycle:lifecycle-common-java8:${version.lifecycleVersion}",
+
+            //----------------------------------------Coroutines-------------------------------------------------------------
+            "kotlinx-coroutines-core"    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version.coroutinesVersion}",
+            "kotlinx-coroutines-android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version.coroutinesVersion}",
 
             //----------------------------------------Test----------------------------------------------------------------
             "junit"                      : "junit:junit:4.13.2",

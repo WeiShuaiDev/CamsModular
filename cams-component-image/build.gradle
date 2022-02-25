@@ -1,5 +1,8 @@
 apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
+
+    api rootProject.ext.dependencies["coil"]
+
     api project(':cams-component-common')
 }

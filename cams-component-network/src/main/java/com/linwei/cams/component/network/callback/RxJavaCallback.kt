@@ -17,17 +17,14 @@ abstract class RxJavaCallback<T> : Observer<BaseResponse<T>> {
         val data: BaseResponse<T> = response
 
         if (ApiConstants.REQUEST_SUCCESS == data.errorCode) {
-            System.out.println("code=${data.errorCode} data=${data.data} ")
             onSuccess(data.errorCode, data.data)
         } else {
-            System.out.println("code=${data.errorCode} data=${data.errorMsg} ")
             onFailure(data.errorCode, data.errorMsg)
         }
     }
 
     override fun onError(throwable: Throwable) {
         throwable.message?.let {
-            System.out.println("onError"+it)
             onFailure(ApiConstants.REQUEST_FAILURE, it)
         }
     }

@@ -2,7 +2,7 @@ package com.linwei.cams.component.mvp.base
 
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.base.CommonBaseFragment
-import com.linwei.cams.component.mvp.mvp.MvpView
+import com.linwei.cams.component.mvp.mvp.view.MvpView
 
 /**
  * 基类MvpBaseFragment

@@ -9,3 +9,4 @@ object DelegatesExt {
     fun <T> getPreference(context: Context, name: String, default: T): ReadWriteProperty<Any?, T> =
         Preference(context, name, default)
 }
+

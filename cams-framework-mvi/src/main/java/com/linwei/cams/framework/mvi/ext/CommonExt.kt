@@ -5,8 +5,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.linwei.cams.framework.mvi.mvi.intent.livedata.SingleLiveEvent
-import com.linwei.cams.framework.mvi.mvi.intent.livedata.SingleLiveListEvent
+import com.linwei.cams.framework.mvi.mvi.intent.livedata.LiveDataListEvent
+import com.linwei.cams_mvvm.livedatabus.LiveDataEvent
 import kotlin.reflect.KProperty1
 
 sealed class FetchStatus {
@@ -66,12 +66,20 @@ fun <T> MutableLiveData<T>.setState(reducer: T.() -> T) {
     this.value = this.value?.reducer()
 }
 
-fun <T> SingleLiveEvent<T>.setEvent(value: T) {
+fun <T> LiveDataEvent<T>.setEvent(value: T) {
     this.value = value
 }
 
-fun <T> SingleLiveListEvent<T>.setEvent(vararg values: T) {
-    this.value = values.toList()
+fun <T> LiveDataEvent<T>.setPostEvent(value: T) {
+    this.postValue(value)
+}
+
+fun <T> LiveDataListEvent<T>.setEvent(values:List<T>) {
+    this.value = values
+}
+
+fun <T> LiveDataListEvent<T>.setPostEvent(values: List<T>) {
+    this.postValue(values)
 }
 
 fun <T> LiveData<List<T>>.observeEvent(lifecycleOwner: LifecycleOwner, action: (T) -> Unit) {

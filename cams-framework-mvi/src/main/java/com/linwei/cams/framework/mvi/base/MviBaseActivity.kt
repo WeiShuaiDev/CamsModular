@@ -1,14 +1,15 @@
 package com.linwei.cams.framework.mvi.base
 
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.base.CommonBaseActivity
+import com.linwei.cams.component.common.ext.snackBar
 import com.linwei.cams.component.common.ext.toast
 import com.linwei.cams.framework.mvi.mvi.ViewModelDelegate
 import com.linwei.cams.framework.mvi.mvi.intent.MviViewModel
-import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
 import com.linwei.cams.framework.mvi.mvi.view.MviView
 
 /**
@@ -20,10 +21,10 @@ import com.linwei.cams.framework.mvi.mvi.view.MviView
  * @Description:  `MVI` 架构 `Activity` 核心基类
  *-----------------------------------------------------------------------
  */
-abstract class MviBaseActivity<VM : MviViewModel, VB : ViewBinding> : CommonBaseActivity<VB>(),
+abstract class MviBaseActivity<VB : ViewBinding,VM : MviViewModel> : CommonBaseActivity<VB>(),
     ViewModelDelegate<VM>, MviView<VM> {
 
-    private var mViewModel: VM? = null
+    protected var mViewModel: VM? = null
 
     override fun onCreateExpand() {
         super.onCreateExpand()
@@ -59,7 +60,7 @@ abstract class MviBaseActivity<VM : MviViewModel, VB : ViewBinding> : CommonBase
      * @return  [ViewModel]
      */
     private fun obtainViewModel(store: ViewModelStore, vmClass: Class<VM>): VM =
-        createViewModelProvider(store).get(vmClass)
+        createViewModelProvider(store)[vmClass]
 
     /**
      * 创建 [ViewModelProvider] 对象
@@ -77,8 +78,7 @@ abstract class MviBaseActivity<VM : MviViewModel, VB : ViewBinding> : CommonBase
 
     override fun createViewModel(): VM? = null
 
-    override fun showSnackBar(message: String) {
-    }
+    override fun showSnackBar(message: String) = window.decorView.snackBar(message)
 
     override fun showLoadingDialog(message: String) {
     }
@@ -86,7 +86,9 @@ abstract class MviBaseActivity<VM : MviViewModel, VB : ViewBinding> : CommonBase
     override fun dismissLoadingDialog() {
     }
 
-    override fun showToast(message: String) = toast(message)
+    override fun showToast(message: String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
     /**
      *  获取 `ViewModel` 对象

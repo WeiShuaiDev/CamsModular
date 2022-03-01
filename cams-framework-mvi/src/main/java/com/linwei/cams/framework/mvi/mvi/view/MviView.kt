@@ -2,9 +2,10 @@ package com.linwei.cams.framework.mvi.mvi.view
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
+import com.linwei.cams.framework.mvi.ext.observeEvent
 import com.linwei.cams.framework.mvi.mvi.intent.MviViewModel
+import com.linwei.cams.framework.mvi.mvi.intent.StatusCode
 import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
-import com.linwei.cams.framework.mvi.mvi.model.MviViewState
 
 /**
  * ---------------------------------------------------------------------
@@ -30,20 +31,10 @@ interface MviView<VM : MviViewModel> {
      */
     fun bindViewModel(viewModel: VM?, owner: LifecycleOwner) {
         viewModel?.let {
-            it.viewEvent.observe(
+            it.viewEvent.observeEvent(
                 owner
             ) { event ->
-                event?.let {
-                    bindMviViewEvent(event)
-                }
-            }
-
-            it.viewState.observe(
-                owner
-            ) { state ->
-                state?.let {
-                    bindMviViewState(state)
-                }
+                bindMviViewEvent(event)
             }
         }
     }
@@ -53,11 +44,19 @@ interface MviView<VM : MviViewModel> {
      * @param event [MviViewEvent]
      */
     private fun bindMviViewEvent(event: MviViewEvent) {
-        when (event) {
-            is MviViewEvent.ShowSnackBar -> showSnackBar(event.message)
-            is MviViewEvent.ShowToast -> showToast(event.message)
-            is MviViewEvent.ShowLoadingDialog -> showLoadingDialog(event.message)
-            is MviViewEvent.DismissLoadingDialog -> dismissLoadingDialog()
+        when (event.code) {
+            StatusCode.SHOW_SNACK_BAR -> {
+                showSnackBar(event.content.toString())
+            }
+            StatusCode.SHOW_TOAST -> {
+                showToast(event.content.toString())
+            }
+            StatusCode.SHOW_LOADING_DIALOG -> {
+                showLoadingDialog(event.content.toString())
+            }
+            StatusCode.DISMISS_LOADING_DIALOG -> {
+                dismissLoadingDialog()
+            }
             else -> {
                 bindOtherMviViewEvent(event)
             }
@@ -69,7 +68,6 @@ interface MviView<VM : MviViewModel> {
      * @param event [MviViewEvent]
      */
     fun bindOtherMviViewEvent(event: MviViewEvent) {
-
     }
 
     /**
@@ -94,21 +92,5 @@ interface MviView<VM : MviViewModel> {
      * 关闭加载框
      */
     fun dismissLoadingDialog()
-
-    /**
-     * 绑定 [MviViewState] 对象
-     * @param event [MviViewState]
-     */
-    private fun bindMviViewState(state: MviViewState) {
-        bindOtherMviViewState(state)
-    }
-
-    /**
-     * 绑定其他 [MviViewState] 对象
-     * @param event [MviViewState]
-     */
-    fun bindOtherMviViewState(state: MviViewState) {
-
-    }
 
 }

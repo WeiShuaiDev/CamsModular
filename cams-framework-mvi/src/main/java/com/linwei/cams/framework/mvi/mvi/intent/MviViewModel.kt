@@ -2,9 +2,10 @@ package com.linwei.cams.framework.mvi.mvi.intent
 
 import androidx.lifecycle.*
 import com.linwei.cams.framework.mvi.ext.asLiveData
-import com.linwei.cams.framework.mvi.mvi.intent.livedata.SingleLiveEvent
+import com.linwei.cams.framework.mvi.ext.setEvent
+import com.linwei.cams.framework.mvi.ext.setPostEvent
+import com.linwei.cams.framework.mvi.mvi.intent.livedata.StatusListLiveEvent
 import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
-import com.linwei.cams.framework.mvi.mvi.model.MviViewState
 
 /**
  * ---------------------------------------------------------------------
@@ -17,18 +18,27 @@ import com.linwei.cams.framework.mvi.mvi.model.MviViewState
  */
 open class MviViewModel : ViewModel(), DefaultLifecycleObserver {
 
-    private val _viewStates: MutableLiveData<MviViewState> = MutableLiveData()
-    val viewState = _viewStates.asLiveData()
-
-    private val _viewEvents: SingleLiveEvent<MviViewEvent> = SingleLiveEvent()
+    private val _viewEvents: StatusListLiveEvent = StatusListLiveEvent()
     val viewEvent = _viewEvents.asLiveData()
 
-
-    private fun emit(viewState: MviViewState) {
-        _viewStates.value = viewState
+    /**
+     * 同步更新状态
+     * @param event [MviViewEvent] Event
+     */
+    fun sendUpdateEvents(vararg event: MviViewEvent) {
+        _viewEvents.setEvent(event.toList())
     }
 
-    private fun emit(viewEvent: MviViewEvent) {
-        _viewEvents.value = viewEvent
+    /**
+     * 异步更新状态
+     * @param event [MviViewEvent] Event
+     */
+    fun postUpdateEvents(vararg evnet: MviViewEvent) {
+        _viewEvents.setPostEvent(evnet.toList())
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
+        _viewEvents.call()
     }
 }

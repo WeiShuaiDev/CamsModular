@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.base.CommonBaseFragment
+import com.linwei.cams.component.common.ext.snackBar
+import com.linwei.cams.component.common.ext.toast
 import com.linwei.cams.framework.mvi.mvi.ViewModelDelegate
 import com.linwei.cams.framework.mvi.mvi.intent.MviViewModel
 import com.linwei.cams.framework.mvi.mvi.view.MviView
@@ -42,7 +44,7 @@ abstract class MviBaseFragment<VM : MviViewModel, VB : ViewBinding> : CommonBase
         if (mViewModel != null) {
             lifecycle.addObserver(mViewModel!!)
         }
-        bindViewModel(mViewModel,this)
+        bindViewModel(mViewModel, this)
     }
 
     /**
@@ -80,6 +82,20 @@ abstract class MviBaseFragment<VM : MviViewModel, VB : ViewBinding> : CommonBase
      * @return [VM]
      */
     override fun createViewModel(): VM? = null
+
+    override fun showSnackBar(message: String) {
+        activity?.window?.decorView?.snackBar(message)
+    }
+
+    override fun showLoadingDialog(message: String) {
+    }
+
+    override fun dismissLoadingDialog() {
+    }
+
+    override fun showToast(message: String) {
+        activity?.toast(message)
+    }
 
     /**
      *  获取 `ViewModel` 对象

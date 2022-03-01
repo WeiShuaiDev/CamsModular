@@ -1,8 +1,15 @@
 package com.linwei.cams.module.project.ui.project.mvi.model
 
-import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
+import com.linwei.cams.framework.mvi.ext.FetchStatus
+import com.linwei.cams.service.project.model.ProjectTreeBean
+import com.linwei.cams.service.project.model.ProjectTreeDetailsBean
 
- class ProjectViewState() {
 
-}
+data class MviViewState(
+    val fetchStatus: FetchStatus = FetchStatus.NotFetched,
+
+    val projectTreeList: List<ProjectTreeBean> = emptyList(),
+
+    val projectTreeDetailsList: List<ProjectTreeDetailsBean> =emptyList()
+)
 

@@ -15,8 +15,6 @@ import androidx.lifecycle.ViewModelProvider
  */
 class ViewModelFactory : ViewModelProvider.Factory {
 
-    private val mCreators: Map<Class<out ViewModel>, ViewModel> = mutableMapOf()
-
     companion object {
 
         private var INSTANCE: ViewModelFactory? = null
@@ -32,9 +30,7 @@ class ViewModelFactory : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val creator = mCreators[modelClass] ?: mCreators.entries.firstOrNull {
-            modelClass.isAssignableFrom(it.key)
-        }?.value ?: throw IllegalArgumentException("unknown model class $modelClass")
+        val creator = modelClass.newInstance()
         try {
             return creator as T
         } catch (e: Exception) {

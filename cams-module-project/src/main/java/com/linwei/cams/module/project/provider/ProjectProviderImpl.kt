@@ -8,6 +8,7 @@ import com.linwei.cams.component.network.ApiConstants
 import com.linwei.cams.module.project.http.ApiServiceWrap
 import com.linwei.cams.service.project.ProjectRouterTable
 import com.linwei.cams.service.project.model.ProjectTreeBean
+import com.linwei.cams.service.project.model.ProjectTreeDetailsBean
 import com.linwei.cams.service.project.provider.ProjectProvider
 import java.lang.Exception
 
@@ -35,5 +36,20 @@ class ProjectProviderImpl : ProjectProvider {
             }
         }
         return PageState.Error(projectTreeData.errorMsg)
+    }
+
+    override suspend fun fetchProjectTreeDetailsData(): ProjectTreeDetailsBean {
+
+        val projectTreeDetailsData =
+            ApiClient.getInstance().getService(ApiServiceWrap()).getProjectTreeDetailsData()
+
+        projectTreeDetailsData.takeIf { it.errorCode == ApiConstants.REQUEST_SUCCESS }?.apply {
+            this.data?.let {
+                return it
+            } ?: run {
+                throw NullPointerException(errorMsg)
+            }
+        }
+        throw NullPointerException(projectTreeDetailsData.errorMsg)
     }
 }

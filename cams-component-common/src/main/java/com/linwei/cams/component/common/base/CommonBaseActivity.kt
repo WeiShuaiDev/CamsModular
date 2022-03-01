@@ -15,9 +15,9 @@ import java.lang.reflect.ParameterizedType
  */
 abstract class CommonBaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
-    protected lateinit var mViewBinding: VB
+    protected lateinit var mContext: Context
 
-    protected lateinit var mContext:Context
+    protected lateinit var mViewBinding: VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         onBeforeCreateExpand(savedInstanceState)
@@ -34,6 +34,7 @@ abstract class CommonBaseActivity<VB : ViewBinding> : AppCompatActivity() {
         initData()
         initEvent()
     }
+
 
     /**
      * ViewBinding绑定逻辑
@@ -70,7 +71,7 @@ abstract class CommonBaseActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
     protected open fun onCreateExpand() {
-        mContext=this
+        mContext = this
     }
 
     protected abstract fun initView()
@@ -78,5 +79,11 @@ abstract class CommonBaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected abstract fun initData()
 
     protected abstract fun initEvent()
+
+    /**
+     *  获取 `ViewBinding` 对象
+     *  @return mViewBinding [VB]
+     */
+    protected fun getViewBinding(): VB = mViewBinding
 
 }

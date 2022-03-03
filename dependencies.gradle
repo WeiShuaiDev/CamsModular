@@ -23,7 +23,7 @@ ext {
             coilVersion            : "1.4.0",
             stateLayoutVersion     : "1.2.0",
             lifecycleVersion       : "2.4.1",
-            coroutinesVersion      : "1.5.1"
+            coroutinesVersion      : "1.5.2"
     ]
 
     dependencies = [
@@ -69,9 +69,13 @@ ext {
             "stateLayout"                : "com.github.liangjingkanji:${version.stateLayoutVersion}",
 
             //----------------------------------------Jetpack-------------------------------------------------------------
+            //viewModel
             "lifecycle-viewmodel-ktx"    : "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycleVersion}",
+            //LiveData
             "lifecycle-livedata-ktx"     : "androidx.lifecycle:lifecycle-livedata-ktx:${version.lifecycleVersion}",
             "lifecycle-common-java8"     : "androidx.lifecycle:lifecycle-common-java8:${version.lifecycleVersion}",
+            //lifecycle
+            "lifecycle-runtime-ktx"      : "androidx.lifecycle:lifecycle-runtime-ktx:${version.lifecycleVersion}",
 
             //----------------------------------------Coroutines-------------------------------------------------------------
             "kotlinx-coroutines-core"    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version.coroutinesVersion}",

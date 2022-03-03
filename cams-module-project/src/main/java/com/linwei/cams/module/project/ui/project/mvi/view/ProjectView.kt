@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.linwei.cams.framework.mvi.ext.FetchStatus
 import com.linwei.cams.framework.mvi.ext.observeState
+import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
 import com.linwei.cams.framework.mvi.mvi.view.MviView
 import com.linwei.cams.module.project.ui.project.mvi.intent.ProjectViewModel
 import com.linwei.cams.module.project.ui.project.mvi.model.MviViewState
@@ -19,7 +20,7 @@ interface ProjectView : MviView<ProjectViewModel> {
                 observeState(owner, MviViewState::projectTreeList) {
                     projectTreeDataToView(it)
                 }
-                observeState(owner,MviViewState::projectTreeDetailsList){
+                observeState(owner, MviViewState::projectTreeDetailsList) {
                     projectTreeDetailsDataToView(it)
                 }
                 observeState(owner, MviViewState::fetchStatus) {
@@ -38,6 +39,13 @@ interface ProjectView : MviView<ProjectViewModel> {
             }
         }
     }
+
+    override fun bindOtherMviViewEvent(event: MviViewEvent) {
+        super.bindOtherMviViewEvent(event)
+        //扩展Event监听
+
+    }
+
 
     /**
      * 项目树数据更新到View

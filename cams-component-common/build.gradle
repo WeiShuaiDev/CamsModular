@@ -11,9 +11,23 @@ dependencies {
 
     api rootProject.ext.dependencies["arouter-api"]
 
-    api rootProject.ext.dependencies["rxlifecycle3"]
-    api rootProject.ext.dependencies["rxlifecycle3-kotlin"]
-    api rootProject.ext.dependencies["rxlifecycle3-components"]
+    //api (rootProject.ext.dependencies["rxlifecycle3"]){
+    //    exclude module: 'rxjava'
+    //    exclude module: 'jsr305'
+    //}
+    //api (rootProject.ext.dependencies["rxlifecycle3-kotlin"]) {
+    //    exclude module: 'annotation'
+    //    exclude module: 'rxjava'
+    //    exclude module: 'rxandroid'
+    //    exclude module: 'rxlifecycle'
+    //}
+    api (rootProject.ext.dependencies["rxlifecycle4-components"]){
+        exclude module: 'rxjava'
+        exclude module: 'jsr305'
+        exclude module: 'annotation'
+        exclude module: 'rxandroid'
+        exclude module: 'rxlifecycle'
+    }
 
     api rootProject.ext.dependencies["rxjava3"]
     api rootProject.ext.dependencies["rxandroid3"]

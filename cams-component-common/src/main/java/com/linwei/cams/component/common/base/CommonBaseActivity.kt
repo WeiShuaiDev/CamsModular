@@ -22,13 +22,14 @@ abstract class CommonBaseActivity<VB : ViewBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         onBeforeCreateExpand(savedInstanceState)
         super.onCreate(savedInstanceState)
-        onCreateExpand()
 
         routerInjectBinding()
 
         viewBindingLogic().takeIf { true }?.apply {
             setContentView(this)
         } ?: setContentView(getRootLayoutId())
+
+        onCreateExpand()
 
         initView()
         initData()

@@ -16,4 +16,6 @@ dependencies {
     implementation project(':cams-component-database')
     implementation project(':cams-component-image')
     implementation project(':cams-component-network')
+
+    implementation project(':cams-framework-mvp')
 }

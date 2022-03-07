@@ -14,7 +14,7 @@ ext {
             multidexVersion        : "2.0.0",
             constraintlayoutVersion: "2.0.4",
             retrofitVersion        : "2.9.0",
-            rxlifecycle3SdkVersion : "4.0.0",
+            rxlifecycle3SdkVersion : "4.0.2",
             okHttpVersion          : "3.7.0",
             arouterVersion         : "1.5.2",
             rxjava3Version         : "3.0.4",
@@ -28,62 +28,76 @@ ext {
 
     dependencies = [
             //----------------------------------------AndroidX------------------------------------------------------------
-            "appcompat"                  : "androidx.appcompat:appcompat:${version.appcompatVersion}",
-            "material"                   : "com.google.android.material:material:${version.materialVersion}",
-            "constraintlayout"           : "androidx.constraintlayout:constraintlayout:${version.constraintlayoutVersion}",
-            "core-ktx"                   : "androidx.core:core-ktx:1.3.1",
+            "appcompat"                           : "androidx.appcompat:appcompat:${version.appcompatVersion}",
+            "material"                            : "com.google.android.material:material:${version.materialVersion}",
+            "constraintlayout"                    : "androidx.constraintlayout:constraintlayout:${version.constraintlayoutVersion}",
+            "core-ktx"                            : "androidx.core:core-ktx:1.3.1",
 
             //----------------------------------------Retrofit------------------------------------------------------------
-            "retrofit"                   : "com.squareup.retrofit2:retrofit:${version.retrofitVersion}",
-            "adapter-rxjava"             : "com.squareup.retrofit2:adapter-rxjava3:${version.retrofitVersion}",
-            "retrofit-converter-gson"    : "com.squareup.retrofit2:converter-gson:${version.retrofitVersion}",
+            "retrofit"                            : "com.squareup.retrofit2:retrofit:${version.retrofitVersion}",
+            "adapter-rxjava"                      : "com.squareup.retrofit2:adapter-rxjava3:${version.retrofitVersion}",
+            "retrofit-converter-gson"             : "com.squareup.retrofit2:converter-gson:${version.retrofitVersion}",
 
             //----------------------------------------OkHttp3-------------------------------------------------------------
-            "okhttp3"                    : "com.squareup.okhttp3:okhttp:${version.okHttpVersion}",
-            "okhttp3-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${version.okHttpVersion}",
+            "okhttp3"                             : "com.squareup.okhttp3:okhttp:${version.okHttpVersion}",
+            "okhttp3-logging-interceptor"         : "com.squareup.okhttp3:logging-interceptor:${version.okHttpVersion}",
 
             //----------------------------------------RxCache2------------------------------------------------------------
-            "rxcache2"                   : "com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x",
+            "rxcache2"                            : "com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x",
 
             //----------------------------------------RxLifecycle4--------------------------------------------------------
-            "rxlifecycle3"               : "com.trello.rxlifecycle4:rxlifecycle:${version["rxlifecycle3SdkVersion"]}",
-            "rxlifecycle3-kotlin"        : "com.trello.rxlifecycle4:rxlifecycle-kotlin:${version["rxlifecycle3SdkVersion"]}",
-            "rxlifecycle3-components"    : "com.trello.rxlifecycle4:rxlifecycle-components:${version["rxlifecycle3SdkVersion"]}",
+            // RxLifecycle基础库
+            "rxlifecycle4"                        : "com.trello.rxlifecycle4:rxlifecycle:${version["rxlifecycle3SdkVersion"]}",
+            // 支持Kotlin语法的RxLifecycle基础库
+            "rxlifecycle4-kotlin"                 : "com.trello.rxlifecycle4:rxlifecycle-kotlin:${version["rxlifecycle3SdkVersion"]}",
+            // Android使用的库，里面使用了Android的生命周期方法
+            // 内部引用了基础库，如果使用此库则无需再引用基础库
+            "rxlifecycle-android"                 : "com.trello.rxlifecycle2:rxlifecycle-android:${version["rxlifecycle3SdkVersion"]}",
+            // 支持Kotlin语法的Android库
+            "rxlifecycle-android-lifecycle-kotlin": "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:${version["rxlifecycle3SdkVersion"]}",
+            // Android组件库，里面定义了例如RxAppCompatActivity、RxFragment之类的Android组件
+            // 内部引用了基础库和Android库，如果使用此库则无需再重复引用
+            "rxlifecycle4-components"             : "com.trello.rxlifecycle4:rxlifecycle-components:${version["rxlifecycle3SdkVersion"]}",
+            // Android使用的库，继承NaviActivity使用
+            "rxlifecycle-navi"                    : "com.trello.rxlifecycle2:rxlifecycle-navi:${version["rxlifecycle3SdkVersion"]}",
+            // Android使用的库，继承LifecycleActivity使用
+            //需要引入Google的仓库支持，用法和rxlifecycle-navi类似
+            "rxlifecycle-android-lifecycle"       : "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:${version["rxlifecycle3SdkVersion"]}",
 
             //----------------------------------------Rxjava3-------------------------------------------------------------
-            "rxjava3"                    : "io.reactivex.rxjava3:rxjava:${version["rxjava3Version"]}",
-            "rxandroid3"                 : "io.reactivex.rxjava3:rxandroid:${version.rxandroidVersion}",
-            "rxkotlin3"                  : "io.reactivex.rxjava3:rxkotlin:${version.rxkotlinVersion}",
+            "rxjava3"                             : "io.reactivex.rxjava3:rxjava:${version["rxjava3Version"]}",
+            "rxandroid3"                          : "io.reactivex.rxjava3:rxandroid:${version.rxandroidVersion}",
+            "rxkotlin3"                           : "io.reactivex.rxjava3:rxkotlin:${version.rxkotlinVersion}",
 
             //----------------------------------------ARouter-------------------------------------------------------------
-            "arouter-api"                : "com.alibaba:arouter-api:${version.arouterVersion}",
-            "arouter-compiler"           : "com.alibaba:arouter-compiler:${version.arouterVersion}",
+            "arouter-api"                         : "com.alibaba:arouter-api:${version.arouterVersion}",
+            "arouter-compiler"                    : "com.alibaba:arouter-compiler:${version.arouterVersion}",
 
             //----------------------------------------Utils---------------------------------------------------------------
-            "multidex"                   : "com.android.support:multidex:${version.multidexVersion}",
+            "multidex"                            : "com.android.support:multidex:${version.multidexVersion}",
 
             //----------------------------------------Coil----------------------------------------------------------------
-            "coil"                       : "io.coil-kt:coil:${version.coilVersion}",
+            "coil"                                : "io.coil-kt:coil:${version.coilVersion}",
 
             //----------------------------------------StateLayout---------------------------------------------------------
-            "stateLayout"                : "com.github.liangjingkanji:${version.stateLayoutVersion}",
+            "stateLayout"                         : "com.github.liangjingkanji:${version.stateLayoutVersion}",
 
             //----------------------------------------Jetpack-------------------------------------------------------------
             //viewModel
-            "lifecycle-viewmodel-ktx"    : "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycleVersion}",
+            "lifecycle-viewmodel-ktx"             : "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycleVersion}",
             //LiveData
-            "lifecycle-livedata-ktx"     : "androidx.lifecycle:lifecycle-livedata-ktx:${version.lifecycleVersion}",
-            "lifecycle-common-java8"     : "androidx.lifecycle:lifecycle-common-java8:${version.lifecycleVersion}",
+            "lifecycle-livedata-ktx"              : "androidx.lifecycle:lifecycle-livedata-ktx:${version.lifecycleVersion}",
+            "lifecycle-common-java8"              : "androidx.lifecycle:lifecycle-common-java8:${version.lifecycleVersion}",
             //lifecycle
-            "lifecycle-runtime-ktx"      : "androidx.lifecycle:lifecycle-runtime-ktx:${version.lifecycleVersion}",
+            "lifecycle-runtime-ktx"               : "androidx.lifecycle:lifecycle-runtime-ktx:${version.lifecycleVersion}",
 
             //----------------------------------------Coroutines-------------------------------------------------------------
-            "kotlinx-coroutines-core"    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version.coroutinesVersion}",
-            "kotlinx-coroutines-android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version.coroutinesVersion}",
+            "kotlinx-coroutines-core"             : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version.coroutinesVersion}",
+            "kotlinx-coroutines-android"          : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${version.coroutinesVersion}",
 
             //----------------------------------------Test----------------------------------------------------------------
-            "junit"                      : "junit:junit:4.13.2",
-            "test-junit"                 : "androidx.test.ext:junit:1.1.2",
-            "espresso-core"              : "androidx.test.espresso:espresso-core:3.3.0"
+            "junit"                               : "junit:junit:4.13.2",
+            "test-junit"                          : "androidx.test.ext:junit:1.1.2",
+            "espresso-core"                       : "androidx.test.espresso:espresso-core:3.3.0"
     ]
 }

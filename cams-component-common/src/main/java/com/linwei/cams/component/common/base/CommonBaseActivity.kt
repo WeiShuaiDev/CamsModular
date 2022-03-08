@@ -7,13 +7,14 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.opensource.ARouterManager
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.ParameterizedType
 
 /**
  * 基类CommonBaseActivity
  */
-abstract class CommonBaseActivity<VB : ViewBinding> : AppCompatActivity() {
+abstract class CommonBaseActivity<VB : ViewBinding> : RxAppCompatActivity() {
 
     protected lateinit var mContext: Context
 

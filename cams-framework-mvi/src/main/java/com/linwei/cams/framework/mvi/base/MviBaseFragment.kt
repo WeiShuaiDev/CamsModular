@@ -93,7 +93,7 @@ abstract class MviBaseFragment<VM : MviViewModel, VB : ViewBinding> : CommonBase
     override fun dismissLoadingDialog() {
     }
 
-    override fun showToast(message: String) {
+    override fun showToast(message: String?) {
         activity?.toast(message)
     }
 

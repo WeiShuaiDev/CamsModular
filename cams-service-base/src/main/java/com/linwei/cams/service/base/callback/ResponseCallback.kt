@@ -7,7 +7,7 @@ interface ResponseCallback<T> {
      * 成功回调
      * @param t:T 返回数据
      */
-    fun onSuccess(t: T?)
+    fun onSuccess(data: T?)
 
     /**
      * 失败回调

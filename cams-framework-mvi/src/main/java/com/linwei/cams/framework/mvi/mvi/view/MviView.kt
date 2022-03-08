@@ -80,7 +80,7 @@ interface MviView<VM : MviViewModel> {
      * 显示Toast
      * @param message [String]
      */
-    fun showToast(message: String)
+    fun showToast(message: String?)
 
     /**
      * 显示加载框

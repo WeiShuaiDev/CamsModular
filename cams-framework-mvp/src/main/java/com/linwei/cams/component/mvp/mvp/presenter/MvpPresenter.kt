@@ -1,7 +1,6 @@
 package com.linwei.cams.component.mvp.mvp.presenter
 
 import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.linwei.cams.component.mvp.mvp.model.IMvpModel
 import com.linwei.cams.component.mvp.mvp.view.IMvpView
@@ -15,16 +14,15 @@ import com.linwei.cams.component.mvp.mvp.view.IMvpView
  * @Description: MVP架构 `Presenter` 接口实现
  * -----------------------------------------------------------------------
  */
-abstract class MvpPresenter<M : IMvpModel, V : IMvpView>(
-    private var model: M?,
-    private var rootView: V?
+abstract class MvpPresenter<V : IMvpView,M : IMvpModel>(
+    private var rootView: V?,
+    private var model: M?
 ) : IMvpPresenter, DefaultLifecycleObserver {
 
     init {
         rootView?.let { v ->
             if (v is LifecycleOwner) {
                 v.lifecycle.addObserver(this)
-
                 model?.let { m ->
                     if (m is DefaultLifecycleObserver) {
                         v.lifecycle.addObserver(m)

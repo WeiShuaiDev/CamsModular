@@ -1,14 +1,13 @@
 package com.linwei.cams.component.mvp.base
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.base.CommonBaseFragment
+import com.linwei.cams.component.common.ext.snackBar
+import com.linwei.cams.component.common.ext.toast
 import com.linwei.cams.component.mvp.mvp.presenter.IMvpPresenter
 import com.linwei.cams.component.mvp.mvp.view.IMvpView
-import com.trello.rxlifecycle4.android.FragmentEvent
-import io.reactivex.rxjava3.subjects.BehaviorSubject
 
 /**
  * ---------------------------------------------------------------------
@@ -19,59 +18,36 @@ import io.reactivex.rxjava3.subjects.BehaviorSubject
  * @Description: MVP架构 基类MvpBaseFragment
  * -----------------------------------------------------------------------
  */
-abstract class MvpBaseFragment<T : ViewBinding, P : IMvpPresenter> : CommonBaseFragment<T>(), IMvpView {
+abstract class MvpBaseFragment<T : ViewBinding, P : IMvpPresenter> : CommonBaseFragment<T>(),
+    IMvpView {
 
-    private lateinit var mMvpPresenter: P
+    protected var mMvpPresenter: P? = null
 
-    private var mLifecycleSubject: BehaviorSubject<FragmentEvent> = BehaviorSubject.create()
+    protected abstract fun getPresenter(): P
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mLifecycleSubject.onNext(FragmentEvent.ATTACH)
+    override fun onViewCreatedExpand(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExpand(view, savedInstanceState)
+        mMvpPresenter=getPresenter()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mLifecycleSubject.onNext(FragmentEvent.CREATE)
+    override fun showLoadingDialog(message: String) {
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mLifecycleSubject.onNext(FragmentEvent.CREATE_VIEW)
+    override fun showSnackBar(message: String) {
+        activity?.window?.decorView?.snackBar(message)
     }
 
-    override fun onStart() {
-        super.onStart()
-        mLifecycleSubject.onNext(FragmentEvent.START)
+    override fun showToast(message: String?) {
+        mContext.toast(message)
     }
 
-    override fun onResume() {
-        super.onResume()
-        mLifecycleSubject.onNext(FragmentEvent.RESUME)
-    }
+    override fun dismissLoadingDialog() {
 
-    override fun onPause() {
-        super.onPause()
-        mLifecycleSubject.onNext(FragmentEvent.PAUSE)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mLifecycleSubject.onNext(FragmentEvent.STOP)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        mLifecycleSubject.onNext(FragmentEvent.DESTROY_VIEW)
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        mLifecycleSubject.onNext(FragmentEvent.DETACH)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mLifecycleSubject.onNext(FragmentEvent.DESTROY)
+        mMvpPresenter?.onDestroy()
     }
 }

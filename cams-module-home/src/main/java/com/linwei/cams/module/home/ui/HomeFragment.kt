@@ -1,4 +1,4 @@
-package com.linwei.cams.module.home.ui.fragment
+package com.linwei.cams.module.home.ui
 
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route

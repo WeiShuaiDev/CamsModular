@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/HomeModuleAppTheme">
         <activity
-            android:name=".ui.activity.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="true"
             android:label="@string/home_module_page">
             <intent-filter>

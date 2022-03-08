@@ -8,8 +8,10 @@ import com.google.android.material.snackbar.Snackbar
 /**
  * 显示Toast
  */
-fun Context.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this, message, length).show()
+fun Context.toast(message: String?, length: Int = Toast.LENGTH_SHORT) {
+    if (message?.isNotEmpty() == true) {
+        Toast.makeText(this, message, length).show()
+    }
 }
 
 /**

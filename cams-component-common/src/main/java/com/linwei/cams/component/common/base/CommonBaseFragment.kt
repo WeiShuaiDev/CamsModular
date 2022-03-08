@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.opensource.ARouterManager
+import com.trello.rxlifecycle4.components.support.RxFragment
+import com.trello.rxlifecycle4.components.support.RxFragmentActivity
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.ParameterizedType
 
 /**
  * 基类CommonBaseFragment
  */
-abstract class CommonBaseFragment<VB : ViewBinding> : Fragment() {
+abstract class CommonBaseFragment<VB : ViewBinding> : RxFragment() {
 
     protected lateinit var mViewBinding: VB
 

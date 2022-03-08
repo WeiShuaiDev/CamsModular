@@ -86,8 +86,8 @@ abstract class MviBaseActivity<VB : ViewBinding,VM : MviViewModel> : CommonBaseA
     override fun dismissLoadingDialog() {
     }
 
-    override fun showToast(message: String){
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun showToast(message: String?){
+        mContext.toast(message)
     }
 
     /**

@@ -10,27 +10,28 @@ package com.linwei.cams.component.mvp.mvp.view
  *-----------------------------------------------------------------------
  */
 interface IMvpView {
-    /**
-     * 显示加载框
-     * @param message [Int]
-     */
-    fun showLoading(message: Int)
 
     /**
-     * 隐藏加载框
-     */
-    fun hideLoading()
-
-    /**
-     * 显示日志信息
-     * @param message [Int]
-     */
-    fun showMessage(message: Int)
-
-    /**
-     * 显示日志信息
+     * 显示 SnackBar
      * @param message [String]
      */
-    fun showMessage(message: String)
+    fun showSnackBar(message: String)
+
+    /**
+     * 显示Toast
+     * @param message [String]
+     */
+    fun showToast(message: String?)
+
+    /**
+     * 显示加载框
+     * @param message [String]
+     */
+    fun showLoadingDialog(message: String)
+
+    /**
+     * 关闭加载框
+     */
+    fun dismissLoadingDialog()
 
 }

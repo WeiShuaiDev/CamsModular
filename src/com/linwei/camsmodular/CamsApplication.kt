@@ -3,10 +3,11 @@ package com.linwei.camsmodular
 import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
-import com.alibaba.android.arouter.launcher.ARouter
 import com.linwei.cams.component.common.opensource.ARouterManager
 import com.linwei.cams.module.home.HomeApplicationDelegate
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class CamsApplication : MultiDexApplication() {
 
     private val mHomeApplicationDelegate by lazy {

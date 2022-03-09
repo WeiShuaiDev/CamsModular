@@ -22,6 +22,7 @@ ext {
             rxkotlinVersion          : "3.0.0",
             rxandroidVersion         : "3.0.0",
             coilVersion              : "1.4.0",
+            hiltVersion              : "2.40.1",
             stateLayoutVersion       : "1.2.0",
             lifecycleVersion         : "2.4.1",
             coroutinesVersion        : "1.5.2"
@@ -80,6 +81,10 @@ ext {
 
             //----------------------------------------Coil----------------------------------------------------------------
             "coil"                                : "io.coil-kt:coil:${version.coilVersion}",
+
+            //----------------------------------------Hint----------------------------------------------------------------
+            "hilt-android"                        : "com.google.dagger:hilt-android:${version.hiltVersion}",
+            "hilt-compiler"                       : "com.google.dagger:hilt-compiler:${version.hiltVersion}",
 
             //----------------------------------------StateLayout---------------------------------------------------------
             "stateLayout"                         : "com.github.liangjingkanji:${version.stateLayoutVersion}",

@@ -9,21 +9,22 @@ ext {
     ]
 
     version = [
-            appcompatVersion       : "1.4.1",
-            materialVersion        : "1.5.0",
-            multidexVersion        : "2.0.0",
-            constraintlayoutVersion: "2.0.4",
-            retrofitVersion        : "2.9.0",
-            rxlifecycle3SdkVersion : "4.0.2",
-            okHttpVersion          : "3.7.0",
-            arouterVersion         : "1.5.2",
-            rxjava3Version         : "3.0.4",
-            rxkotlinVersion        : "3.0.0",
-            rxandroidVersion       : "3.0.0",
-            coilVersion            : "1.4.0",
-            stateLayoutVersion     : "1.2.0",
-            lifecycleVersion       : "2.4.1",
-            coroutinesVersion      : "1.5.2"
+            appcompatVersion         : "1.4.1",
+            materialVersion          : "1.5.0",
+            multidexVersion          : "2.0.0",
+            constraintlayoutVersion  : "2.0.4",
+            retrofitVersion          : "2.9.0",
+            loggingInterceptorVersion: "4.9.0",
+            rxlifecycle3SdkVersion   : "4.0.2",
+            okHttpVersion            : "3.7.0",
+            arouterVersion           : "1.5.2",
+            rxjava3Version           : "3.0.4",
+            rxkotlinVersion          : "3.0.0",
+            rxandroidVersion         : "3.0.0",
+            coilVersion              : "1.4.0",
+            stateLayoutVersion       : "1.2.0",
+            lifecycleVersion         : "2.4.1",
+            coroutinesVersion        : "1.5.2"
     ]
 
     dependencies = [
@@ -37,6 +38,7 @@ ext {
             "retrofit"                            : "com.squareup.retrofit2:retrofit:${version.retrofitVersion}",
             "adapter-rxjava"                      : "com.squareup.retrofit2:adapter-rxjava3:${version.retrofitVersion}",
             "retrofit-converter-gson"             : "com.squareup.retrofit2:converter-gson:${version.retrofitVersion}",
+            "logging-interceptor"                 : "com.squareup.okhttp3:logging-interceptor:${version.loggingInterceptorVersion}",
 
             //----------------------------------------OkHttp3-------------------------------------------------------------
             "okhttp3"                             : "com.squareup.okhttp3:okhttp:${version.okHttpVersion}",

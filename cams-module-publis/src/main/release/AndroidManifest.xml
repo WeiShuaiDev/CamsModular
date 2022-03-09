@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.PublisActivity"
+        <activity android:name=".ui.publis.PublisActivity"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />

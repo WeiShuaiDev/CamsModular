@@ -50,6 +50,7 @@ class ApiClient private constructor(var apiConfiguration: ApiConfiguration?) {
         builder.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
         builder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
         builder.writeTimeout(WHITE_TIME_OUT, TimeUnit.SECONDS)
+
         if (BuildConfig.DEBUG) {
             val httpLoggingInterceptor = HttpLoggingInterceptor()
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

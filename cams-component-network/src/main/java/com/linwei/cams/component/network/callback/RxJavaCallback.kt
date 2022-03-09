@@ -1,11 +1,12 @@
 package com.linwei.cams.component.network.callback
 
 import com.linwei.cams.component.network.ApiConstants
-import com.linwei.cams.component.network.model.BaseResponse
+import com.linwei.cams.component.network.exception.ApiException
+import com.linwei.cams.component.network.model.ResponseData
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.disposables.Disposable
 
-abstract class RxJavaCallback<T> : Observer<BaseResponse<T>> {
+abstract class RxJavaCallback<T> : Observer<ResponseData<T>> {
     override fun onComplete() {
     }
 
@@ -13,20 +14,23 @@ abstract class RxJavaCallback<T> : Observer<BaseResponse<T>> {
         disposable.isDisposed
     }
 
-    override fun onNext(response: BaseResponse<T>) {
-        val data: BaseResponse<T> = response
+    override fun onNext(response: ResponseData<T>) {
+        val data: ResponseData<T> = response
 
         if (ApiConstants.REQUEST_SUCCESS == data.errorCode) {
-            onSuccess(data.errorCode, data.data)
+            if (null != data.data) {
+                onSuccess(data.errorCode, data.data)
+            } else {
+                onFailure(ApiConstants.EMPTY_DATA_ERROR, "")
+            }
         } else {
             onFailure(data.errorCode, data.errorMsg)
         }
     }
 
     override fun onError(throwable: Throwable) {
-        throwable.message?.let {
-            onFailure(ApiConstants.REQUEST_FAILURE, it)
-        }
+        val exception = ApiException.handleException(throwable)
+        onFailure(exception.code, exception.displayMessage)
     }
 
 
@@ -35,7 +39,7 @@ abstract class RxJavaCallback<T> : Observer<BaseResponse<T>> {
      * @param code [String] 成功状态码
      * @param data [T] 响应数据
      */
-    open fun onSuccess(code: Int?, data: T?) {}
+    open fun onSuccess(code: Int?, data: T) {}
 
     /**
      * 接口请求失败，回调 [onFailure] 方法

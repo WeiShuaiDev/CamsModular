@@ -4,6 +4,11 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.linwei.cams.component.mvp.mvp.model.IMvpModel
 import com.linwei.cams.component.mvp.mvp.view.IMvpView
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+
 
 /**
  * ---------------------------------------------------------------------

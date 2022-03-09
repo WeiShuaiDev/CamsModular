@@ -1,12 +1,11 @@
-package com.linwei.cams.module.publis.ui
+package com.linwei.cams.module.publis.ui.publis
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.linwei.cams.component.common.base.CommonBaseActivity
-import com.linwei.cams.module.publis.databinding.PublisActivityPublisBinding
-import com.linwei.cams.service.home.HomeRouterTable
+import com.linwei.cams.component.mvvm.base.MvvmBaseActivity
+import com.linwei.cams.module.publis.ui.publis.viewmodel.PublisViewModel
 import com.linwei.cams.service.publis.PublisRouterTable
 
 @Route(path = PublisRouterTable.PATH_ACTIVITY_PUBLIS)
-class PublisActivity : CommonBaseActivity<PublisActivityPublisBinding>() {
+class PublisActivity : MvvmBaseActivity<PublisViewModel>() {
 
     override fun hasInjectARouter(): Boolean = true
 

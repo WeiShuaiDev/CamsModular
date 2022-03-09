@@ -7,6 +7,7 @@ import com.linwei.cams.module.home.databinding.HomeActivityHomeBinding
 import com.linwei.cams.module.home.ui.home.contract.IHomeView
 import com.linwei.cams.module.home.ui.home.presenter.HomePresenter
 import com.linwei.cams.service.home.HomeRouterTable
+import com.linwei.cams.service.home.model.BannerBean
 import com.linwei.cams.service.home.model.HomeBean
 
 @Route(path = HomeRouterTable.PATH_ACTIVITY_HOME)
@@ -30,7 +31,12 @@ class HomeActivity : MvpBaseActivity<HomeActivityHomeBinding, HomePresenter>(), 
     }
 
     override fun updateHomeDataToView(homeBean: HomeBean) {
-        mViewBinding.homeContentTv.text = homeBean.toString()
+        mViewBinding.mTvHomeContent.text = homeBean.toString()
+    }
+
+    override fun updateBannerDataToView(bannerList: List<BannerBean>) {
+        mViewBinding.mTvHomeContent.text = bannerList.toString()
+
     }
 
 }

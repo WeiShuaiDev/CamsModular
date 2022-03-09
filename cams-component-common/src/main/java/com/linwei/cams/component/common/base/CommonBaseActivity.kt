@@ -25,10 +25,7 @@ abstract class CommonBaseActivity<VB : ViewBinding> : RxAppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         routerInjectBinding()
-
-        viewBindingLogic().takeIf { true }?.apply {
-            setContentView(this)
-        } ?: setContentView(getRootLayoutId())
+        viewBinding()
 
         onCreateExpand()
 
@@ -59,6 +56,22 @@ abstract class CommonBaseActivity<VB : ViewBinding> : RxAppCompatActivity() {
         return null
     }
 
+    /**
+     * ViewBinding绑定
+     */
+    private fun viewBinding() {
+        hasViewBinding().takeIf { true }.apply {
+            val viewBindingRoot = viewBindingLogic()
+            if (viewBindingRoot != null)
+                setContentView(viewBindingRoot)
+            else
+                setContentView(getRootLayoutId())
+        }
+    }
+
+    /**
+     * Router注入绑定
+     */
     private fun routerInjectBinding() {
         hasInjectARouter().takeIf { true }.apply {
             ARouterManager.inject(this@CommonBaseActivity)
@@ -68,6 +81,8 @@ abstract class CommonBaseActivity<VB : ViewBinding> : RxAppCompatActivity() {
     protected open fun getRootLayoutId(): Int = -1
 
     protected open fun hasInjectARouter(): Boolean = false
+
+    protected open fun hasViewBinding(): Boolean = true
 
     protected open fun onBeforeCreateExpand(savedInstanceState: Bundle?) {
     }

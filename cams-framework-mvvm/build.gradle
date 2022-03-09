@@ -2,8 +2,8 @@ apply from: '../gradle/global_component_config.gradle'
 
 android {
     buildFeatures {
-        viewBinding true
-        dataBinding false
+        viewBinding false
+        dataBinding true
     }
 }
 

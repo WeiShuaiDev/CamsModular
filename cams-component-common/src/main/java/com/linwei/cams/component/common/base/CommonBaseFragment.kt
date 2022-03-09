@@ -33,11 +33,13 @@ abstract class CommonBaseFragment<VB : ViewBinding> : RxFragment() {
         savedInstanceState: Bundle?
     ): View? {
         onCreateViewExpand(inflater, container, savedInstanceState)
-        return viewBindingLogic(inflater, container) ?: inflater.inflate(
-            getRootLayoutId(),
-            container,
-            false
-        )
+        hasViewBinding().takeIf { true }.apply {
+            return viewBindingLogic(inflater, container) ?: inflater.inflate(
+                getRootLayoutId(),
+                container,
+                false
+            )
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -86,10 +88,11 @@ abstract class CommonBaseFragment<VB : ViewBinding> : RxFragment() {
             }
         }
     }
+    protected open fun getRootLayoutId(): Int = -1
 
     protected open fun hasInjectARouter(): Boolean = false
 
-    protected open fun getRootLayoutId(): Int = -1
+    protected open fun hasViewBinding(): Boolean = true
 
     protected open fun onCreateViewExpand(
         inflater: LayoutInflater,

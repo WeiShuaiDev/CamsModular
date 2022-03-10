@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.opensource.ARouterManager
 import com.trello.rxlifecycle4.components.support.RxFragment
@@ -25,6 +27,21 @@ abstract class CommonBaseFragment<VB : ViewBinding> : RxFragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
+        //在新版本的Fragment#onActivityCreated()废除.使用LifecycleObserver监听
+        //onActivityCreated() 方法现已弃用。与 Fragment 视图有关的代码应在 onViewCreated()（在 onActivityCreated() 之前调用）中执行，而其他初始化代码应在 onCreate() 中执行。如需专门在 Activity 的 onCreate() 完成时接收回调，应在 onAttach() 中的 Activity 的 Lifecycle 上注册 LifeCycleObserver，并在收到 onCreate() 回调后将其移除。
+        //版权声明：本文为CSDN博主「Ym Android开发工程师」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+        requireActivity().lifecycle.addObserver(object: DefaultLifecycleObserver {
+            override fun onCreate(owner: LifecycleOwner) {
+                onActivityCreated()
+                owner.lifecycle.removeObserver(this)
+            }
+        })
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        routerInjectBinding()
     }
 
     override fun onCreateView(
@@ -48,11 +65,6 @@ abstract class CommonBaseFragment<VB : ViewBinding> : RxFragment() {
         initView()
         initData()
         initEvent()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        routerInjectBinding()
     }
 
     /**
@@ -106,6 +118,13 @@ abstract class CommonBaseFragment<VB : ViewBinding> : RxFragment() {
     protected abstract fun initData()
 
     protected abstract fun initEvent()
+
+    /**
+     * [Fragment]宿主[Activity]初始化结束调用
+     */
+    protected open fun onActivityCreated(){
+
+    }
 
     protected open fun onViewCreatedExpand(view: View, savedInstanceState: Bundle?) {
     }

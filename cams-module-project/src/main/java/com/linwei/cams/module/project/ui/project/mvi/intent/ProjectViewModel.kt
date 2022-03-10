@@ -14,6 +14,9 @@ import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
 import com.linwei.cams.module.project.ui.project.mvi.model.MviViewState
 import com.linwei.cams.service.project.provider.ProjectProvider
 import com.linwei.cams.service.project.provider.ProjectProviderHelper
+import io.reactivex.rxjava3.disposables.Disposable
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
@@ -40,6 +43,7 @@ class ProjectViewModel : MviViewModel() {
         _viewStates.setState {
             copy(fetchStatus = FetchStatus.Fetching)
         }
+
         viewModelScope.launch {
             when (val result = mProjectProvider.fetchProjectTreeData()) {
                 is PageState.Error -> {

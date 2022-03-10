@@ -2,6 +2,9 @@ apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
     api rootProject.ext.dependencies["core-ktx"]
+    api rootProject.ext.dependencies["activity-ktx"]
+    api rootProject.ext.dependencies["fragment-ktx"]
+
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["material"]
 

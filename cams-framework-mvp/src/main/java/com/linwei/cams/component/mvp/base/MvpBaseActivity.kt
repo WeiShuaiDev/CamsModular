@@ -21,7 +21,7 @@ abstract class MvpBaseActivity<T : ViewBinding, P : IMvpPresenter> :
 
     protected var mMvpPresenter: P? = null
 
-    protected abstract fun getPresenter(): P
+    protected abstract fun getPresenter(): P?
 
     override fun onCreateExpand() {
         super.onCreateExpand()

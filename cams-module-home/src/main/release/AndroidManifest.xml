@@ -18,6 +18,7 @@
                     android:scheme="router" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.HomeDetailsActivity"/>
     </application>
 
 </manifest>

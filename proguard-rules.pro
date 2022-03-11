@@ -22,7 +22,7 @@
 
 
 #--Routes-------------------------------------------------------------------------------------
--keep public class com.alibaba.android.arouter..**{*;}
+-keep public class com.alibaba.android.arouter.routes.**{*;}
 -keep public class com.alibaba.android.arouter.facade.**{*;}
 -keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
 
@@ -31,3 +31,9 @@
 
 # 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
 # -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
+
+# 避免 ViewBinding 类被混淆导致反射初始化失败
+-keep public interface androidx.viewbinding.ViewBinding
+-keepclassmembers class * implements androidx.viewbinding.ViewBinding{
+    *;
+}

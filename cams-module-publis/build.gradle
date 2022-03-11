@@ -22,6 +22,7 @@ dependencies {
     implementation project(':cams-component-database')
     implementation project(':cams-component-image')
     implementation project(':cams-component-network')
+    implementation project(':cams-component-web')
 
     //记得修改buildFeatures中的dataBinding=true配置
     implementation project(':cams-framework-mvvm')

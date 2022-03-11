@@ -1,8 +1,11 @@
 apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
-
+    //Coil
     api rootProject.ext.dependencies["coil"]
+    api rootProject.ext.dependencies["coil-gif"]
+    api rootProject.ext.dependencies["coil-svg"]
+    api rootProject.ext.dependencies["coil-video"]
 
     api project(':cams-component-common')
 }

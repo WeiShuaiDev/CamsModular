@@ -1,9 +1,11 @@
 package com.linwei.cams.module.home.ui.home
 
+import android.Manifest
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.linwei.cams.component.common.ext.getExtra
 import com.linwei.cams.component.common.ext.launch
+import com.linwei.cams.component.common.ext.requestPermission
 import com.linwei.cams.component.common.ext.startActivityForResult
 import com.linwei.cams.component.mvp.base.MvpBaseActivity
 import com.linwei.cams.module.home.databinding.HomeActivityHomeBinding

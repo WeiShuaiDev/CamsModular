@@ -33,7 +33,7 @@ ext {
             stateLayoutVersion        : "1.2.0",
             lifecycleVersion          : "2.4.1",
             coroutinesVersion         : "1.5.2",
-            autosizeVersion           : "1.2.1",
+            autosizeVersion           : "v1.2.1",
             permissionXVersion        : "1.4.0",
             leakcanaryAndroidVersion  : "2.7.0",
             autoServiceVersion        : "1.0",
@@ -106,13 +106,13 @@ ext {
             "coil-video"                          : "io.coil-kt:coil-video:${version.coilVersion}",
 
             //----------------------------------------StateLayout---------------------------------------------------------
-            "stateLayout"                         : "com.github.liangjingkanji:${version.stateLayoutVersion}",
+            "stateLayout"                         : "com.github.liangjingkanji:StateLayout:${version.stateLayoutVersion}",
 
             //----------------------------------------Mmkv----------------------------------------------------------------
             "mmkv"                                : "com.tencent:mmkv-static:${version.mmkvVersion}",
 
             //----------------------------------------AutoLayout----------------------------------------------------------
-            "autosize"                            : "me.jessyan:autosize:${version.autosizeVersion}",
+            "autosize"                            : "com.github.JessYanCoding:AndroidAutoSize:${version.autosizeVersion}",
 
             //----------------------------------------BaseRecyclerViewAdapterHelper---------------------------------------
             "baseRecyclerViewAdapterHelper"       : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version.recyclerViewAdapterVersion}",

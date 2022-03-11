@@ -1,6 +1,8 @@
 package com.linwei.cams.module.home.ui
 
+import android.Manifest
 import com.linwei.cams.component.common.ext.getExtra
+import com.linwei.cams.component.common.ext.requestPermission
 import com.linwei.cams.component.common.ext.setResult
 import com.linwei.cams.component.mvp.base.MvpBaseActivity
 import com.linwei.cams.component.mvp.mvp.model.IMvpModel
@@ -17,6 +19,12 @@ class HomeDetailsActivity :
     }
 
     override fun initData() {
+       requestPermission(
+            success = {
+                showToast("请求成功！")
+            }, failed = {
+                showToast("请求失败！")
+            }).launch(Manifest.permission.READ_EXTERNAL_STORAGE)
     }
 
     override fun initEvent() {

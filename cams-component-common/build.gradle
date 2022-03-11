@@ -2,6 +2,7 @@ apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
     api rootProject.ext.dependencies["core-ktx"]
+
     api rootProject.ext.dependencies["activity-ktx"]
     api rootProject.ext.dependencies["fragment-ktx"]
 
@@ -10,10 +11,7 @@ dependencies {
 
     api rootProject.ext.dependencies["constraintlayout"]
 
-    api rootProject.ext.dependencies["multidex"]
-
-    api rootProject.ext.dependencies["arouter-api"]
-
+    //RxLifecycle4
     api (rootProject.ext.dependencies["rxlifecycle4"]){
         exclude module: 'rxjava'
         exclude module: 'jsr305'
@@ -24,6 +22,7 @@ dependencies {
         exclude module: 'rxandroid'
         exclude module: 'rxlifecycle'
     }
+
     api (rootProject.ext.dependencies["rxlifecycle4-components"]){
         exclude module: 'rxjava'
         exclude module: 'jsr305'
@@ -32,16 +31,49 @@ dependencies {
         exclude module: 'rxlifecycle'
     }
 
+    //Rxjava
     api rootProject.ext.dependencies["rxjava3"]
     api rootProject.ext.dependencies["rxandroid3"]
     api rootProject.ext.dependencies["rxkotlin3"]
+
+    //ARouter
+    api rootProject.ext.dependencies["arouter-api"]
+
+    //Multidex
+    api rootProject.ext.dependencies["multidex"]
+
+    //StateLayout
+    api rootProject.ext.dependencies["stateLayout"]
+
+    //AutoSize
+    api rootProject.ext.dependencies["autosize"]
+
+    //BaseRecyclerViewAdapterHelper
+    api rootProject.ext.dependencies["baseRecyclerViewAdapterHelper"]
+
+    //EventBus
+    api rootProject.ext.dependencies["eventbus"]
+    kapt rootProject.ext.dependencies["eventbusAPT"]
+
+    //LeakCanary-Android
+    api rootProject.ext.dependencies["leakcanary-android"]
+
+    //AutoService
+    api rootProject.ext.dependencies["auto-service"]
+    kapt rootProject.ext.dependencies["auto-service-annotations"]
 
     //ViewModel and LiveData
     api rootProject.ext.dependencies["lifecycle-viewmodel-ktx"]
     api rootProject.ext.dependencies["lifecycle-livedata-ktx"]
     kapt rootProject.ext.dependencies["lifecycle-common-java8"]
 
+    //Hilt
+    api rootProject.ext.dependencies["hilt-android"]
+    api rootProject.ext.dependencies["hilt-compiler"]
+    kapt rootProject.ext.dependencies["hilt-android-compiler"]
+
     //Coroutines
     api rootProject.ext.dependencies["kotlinx-coroutines-core"]
     api rootProject.ext.dependencies["kotlinx-coroutines-android"]
+
 }

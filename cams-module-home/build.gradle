@@ -17,9 +17,7 @@ dependencies {
     implementation project(':cams-component-database')
     implementation project(':cams-component-image')
     implementation project(':cams-component-network')
+    implementation project(':cams-component-web')
 
     implementation project(':cams-framework-mvp')
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 }

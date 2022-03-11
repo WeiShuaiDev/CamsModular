@@ -97,6 +97,7 @@ fun Intent.getExtra(name:String,defaultValue:Any):Any?{
         else ->null
     }
 }
+
 /**
  * 设置`Intent`传输数据
  * @param map [Map]
@@ -125,4 +126,67 @@ fun Intent.putExtra(map:Map<String,Any?>){
  */
 fun ActivityResultLauncher<Intent>.launch(packageContext: Context, cls: Class<*>,block: (Intent) -> Intent) {
     launch(block(Intent(packageContext, cls)))
+}
+
+/**
+ * 请求批量`Permission` 权限
+ * @param callback [ActivityResultCallback]
+ * @return [ActivityResultLauncher]
+ */
+fun AppCompatActivity.requestMultiplePermissions(
+    @NonNull callback: ActivityResultCallback<Map<String,Boolean>>
+):ActivityResultLauncher<Array<String>> {
+    val requestMultiplePermissions :ActivityResultLauncher<Array<String>> =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions : Map<String, Boolean> ->
+            callback.onActivityResult(permissions)
+        }
+    return requestMultiplePermissions
+}
+
+/**
+ * 请求一条`Permission` 权限
+ * @param callback [ActivityResultCallback]
+ * @return [ActivityResultLauncher]
+ */
+fun AppCompatActivity.requestPermission(
+    @NonNull callback: ActivityResultCallback<Boolean>
+):ActivityResultLauncher<String> {
+    val requestPermissions :ActivityResultLauncher<String> =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted  ->
+            callback.onActivityResult(isGranted)
+        }
+    return requestPermissions
+}
+
+/**
+ * 请求一条`Permission` 权限
+ * @param callback [ActivityResultCallback]
+ * @return [ActivityResultLauncher]
+ */
+fun AppCompatActivity.requestPermission(
+    @NonNull success:() ->Unit,@NonNull failed:() ->Unit
+):ActivityResultLauncher<String> {
+    val requestPermissions :ActivityResultLauncher<String> =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted  ->
+            if(isGranted){
+                success()
+            }else{
+                failed()
+            }
+        }
+    return requestPermissions
+}
+
+/** 申请批量 `Permission` 权限
+ * @param input [String]
+ */
+fun ActivityResultLauncher<Array<String>>.launch(input:Array<String>) {
+    launch(input)
+}
+
+/** 申请 `Permission` 权限
+ * @param input [String]
+ */
+fun ActivityResultLauncher<String>.launch(input:String) {
+    launch(input)
 }

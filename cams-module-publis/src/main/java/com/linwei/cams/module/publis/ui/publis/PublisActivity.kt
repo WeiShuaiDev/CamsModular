@@ -1,6 +1,8 @@
 package com.linwei.cams.module.publis.ui.publis
+
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.linwei.cams.component.mvvm.base.MvvmBaseActivity
+import com.linwei.cams.module.publis.R
 import com.linwei.cams.module.publis.ui.publis.viewmodel.PublisViewModel
 import com.linwei.cams.service.publis.PublisRouterTable
 
@@ -8,6 +10,10 @@ import com.linwei.cams.service.publis.PublisRouterTable
 class PublisActivity : MvvmBaseActivity<PublisViewModel>() {
 
     override fun hasInjectARouter(): Boolean = true
+
+    override fun hasViewBinding(): Boolean = true
+
+    override fun getRootLayoutId(): Int = R.layout.publis_activity_publis
 
     override fun initView() {
     }

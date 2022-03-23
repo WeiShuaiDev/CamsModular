@@ -1,9 +1,10 @@
 apply from: '../gradle/global_component_config.gradle'
 
 dependencies {
+
     api project(':cams-component-common')
 
-    api rootProject.ext.dependencies["tencent-tbs-x5"]
+//    api rootProject.ext.dependencies["tencent-tbs-x5"]
 
 
 }

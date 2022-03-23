@@ -6,7 +6,7 @@ import android.content.Context
 import com.linwei.cams.component.common.opensource.ARouterManager
 
 class ProjectApplication : Application() {
-    private lateinit var mProjectApplicationDelegate: ProjectApplicationDelegate
+    private lateinit var mProjectApplicationDelegate: ProjectAppDelegate
 
     companion object {
         @SuppressLint("StaticFieldLeak")
@@ -16,7 +16,7 @@ class ProjectApplication : Application() {
     override fun attachBaseContext(context: Context) {
         super.attachBaseContext(context)
         mContext = context
-        mProjectApplicationDelegate = ProjectApplicationDelegate()
+        mProjectApplicationDelegate = ProjectAppDelegate()
     }
 
     override fun onCreate() {

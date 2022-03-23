@@ -1,4 +1,4 @@
-package com.linwei.cams.component.common.ext
+package com.linwei.cams.component.common.ktx
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

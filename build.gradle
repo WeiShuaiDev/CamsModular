@@ -7,11 +7,10 @@ apply from: 'gradle/app/app_config.gradle'
 apply from: 'gradle/app/app_build.gradle'
 apply from: 'gradle/app/app_flavors.gradle'
 
-
 buildscript {
     ext.kotlin_version = "1.5.30"
     ext.arouter_register_version = "1.0.2"
-    ext.hilt_version="2.40.1"
+    ext.hilt_version="2.41"
     repositories {
         google()
         mavenCentral()

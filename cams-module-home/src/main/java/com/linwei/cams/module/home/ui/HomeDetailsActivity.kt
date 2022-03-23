@@ -1,9 +1,9 @@
 package com.linwei.cams.module.home.ui
 
 import android.Manifest
-import com.linwei.cams.component.common.ext.getExtra
-import com.linwei.cams.component.common.ext.requestPermission
-import com.linwei.cams.component.common.ext.setResult
+import com.linwei.cams.component.common.ktx.getExtra
+import com.linwei.cams.component.common.ktx.requestPermission
+import com.linwei.cams.component.common.ktx.setResult
 import com.linwei.cams.component.mvp.base.MvpBaseActivity
 import com.linwei.cams.component.mvp.mvp.model.IMvpModel
 import com.linwei.cams.component.mvp.mvp.presenter.MvpPresenter
@@ -15,7 +15,7 @@ class HomeDetailsActivity :
 
     override fun initView() {
         val name = intent.getExtra("name", "没有名称") as String
-        mViewBinding.tvHomeTitle.text = name
+        mViewBinding.homeTitleTv.text = name
     }
 
     override fun initData() {
@@ -28,7 +28,7 @@ class HomeDetailsActivity :
     }
 
     override fun initEvent() {
-        mViewBinding.btnStart.setOnClickListener {
+        mViewBinding.homeStartBtn.setOnClickListener {
             setResult("title", "HomeDetailsActivity")
             finish()
         }

@@ -2,7 +2,7 @@ package com.linwei.cams.framework.mvi.mvi.view
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
-import com.linwei.cams.framework.mvi.ext.observeEvent
+import com.linwei.cams.framework.mvi.ktx.observeEvent
 import com.linwei.cams.framework.mvi.mvi.intent.MviViewModel
 import com.linwei.cams.framework.mvi.mvi.intent.StatusCode
 import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent

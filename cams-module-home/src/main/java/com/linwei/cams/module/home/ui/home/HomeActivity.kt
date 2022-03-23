@@ -1,12 +1,10 @@
 package com.linwei.cams.module.home.ui.home
 
-import android.Manifest
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.linwei.cams.component.common.ext.getExtra
-import com.linwei.cams.component.common.ext.launch
-import com.linwei.cams.component.common.ext.requestPermission
-import com.linwei.cams.component.common.ext.startActivityForResult
+import com.linwei.cams.component.common.ktx.getExtra
+import com.linwei.cams.component.common.ktx.launch
+import com.linwei.cams.component.common.ktx.startActivityForResult
 import com.linwei.cams.component.mvp.base.MvpBaseActivity
 import com.linwei.cams.module.home.databinding.HomeActivityHomeBinding
 import com.linwei.cams.module.home.ui.HomeDetailsActivity
@@ -37,19 +35,19 @@ class HomeActivity : MvpBaseActivity<HomeActivityHomeBinding, HomePresenter>(), 
     override fun initView() {
        val activityResultLauncher= startActivityForResult{
             val title= it.data?.getExtra("title", "没有标题") as String
-            mViewBinding.tvHomeTitle.text=title
+            mViewBinding.homeTitleTv.text=title
         }
-        mViewBinding.btnStart.setOnClickListener {
+        mViewBinding.homeStartBtn.setOnClickListener {
             activityResultLauncher.launch(mContext,HomeDetailsActivity::class.java,"name","HomeActivity")
         }
     }
 
     override fun updateHomeDataToView(homeBean: HomeBean) {
-        mViewBinding.tvHomeContent.text = homeBean.toString()
+        mViewBinding.homeContentTv.text = homeBean.toString()
     }
 
     override fun updateBannerDataToView(bannerList: List<BannerBean>) {
-        mViewBinding.tvHomeContent.text = bannerList.toString()
+        mViewBinding.homeContentTv.text = bannerList.toString()
 
     }
 

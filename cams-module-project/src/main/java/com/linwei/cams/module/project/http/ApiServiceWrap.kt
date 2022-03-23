@@ -2,8 +2,9 @@ package com.linwei.cams.module.project.http
 
 import com.linwei.cams.component.network.service.ServiceWrap
 import com.linwei.cams.module.home.Service
+import javax.inject.Inject
 
-class ApiServiceWrap : ServiceWrap<ApiService> {
+class ApiServiceWrap @Inject constructor(): ServiceWrap<ApiService> {
 
     override fun getIdentify(): String = Service.MODULE_ID
 

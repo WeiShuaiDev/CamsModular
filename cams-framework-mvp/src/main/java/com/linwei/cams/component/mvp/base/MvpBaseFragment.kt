@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.base.CommonBaseFragment
-import com.linwei.cams.component.common.ext.snackBar
-import com.linwei.cams.component.common.ext.toast
+import com.linwei.cams.component.common.ktx.snackBar
+import com.linwei.cams.component.common.utils.toast
 import com.linwei.cams.component.mvp.mvp.presenter.IMvpPresenter
 import com.linwei.cams.component.mvp.mvp.view.IMvpView
 
@@ -39,7 +39,7 @@ abstract class MvpBaseFragment<T : ViewBinding, P : IMvpPresenter> : CommonBaseF
     }
 
     override fun showToast(message: String?) {
-        mContext.toast(message)
+        toast(message)
     }
 
     override fun dismissLoadingDialog() {

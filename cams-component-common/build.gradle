@@ -62,6 +62,10 @@ dependencies {
     api rootProject.ext.dependencies["auto-service"]
     kapt rootProject.ext.dependencies["auto-service-annotations"]
 
+    //Bugly
+    api rootProject.ext.dependencies["crashreport"]
+    api rootProject.ext.dependencies["nativecrashreport"]
+
     //ViewModel and LiveData
     api rootProject.ext.dependencies["lifecycle-viewmodel-ktx"]
     api rootProject.ext.dependencies["lifecycle-livedata-ktx"]
@@ -69,8 +73,7 @@ dependencies {
 
     //Hilt
     api rootProject.ext.dependencies["hilt-android"]
-    api rootProject.ext.dependencies["hilt-compiler"]
-    kapt rootProject.ext.dependencies["hilt-android-compiler"]
+    kapt rootProject.ext.dependencies["hilt-compiler"]
 
     //Coroutines
     api rootProject.ext.dependencies["kotlinx-coroutines-core"]

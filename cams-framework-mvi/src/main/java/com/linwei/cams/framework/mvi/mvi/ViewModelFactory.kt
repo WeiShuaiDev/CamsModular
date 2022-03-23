@@ -30,8 +30,8 @@ class ViewModelFactory : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val creator = modelClass.newInstance()
         try {
+            val creator = modelClass.newInstance()
             return creator as T
         } catch (e: Exception) {
             throw RuntimeException()

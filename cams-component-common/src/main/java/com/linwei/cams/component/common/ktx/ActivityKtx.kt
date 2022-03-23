@@ -1,4 +1,4 @@
-package com.linwei.cams.component.common.ext
+package com.linwei.cams.component.common.ktx
 
 import android.app.Activity
 import android.content.Context

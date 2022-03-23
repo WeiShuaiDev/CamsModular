@@ -3,38 +3,39 @@ package com.linwei.cams.module.project.ui.project.mvi.intent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.linwei.cams.component.common.global.PageState
-import com.linwei.cams.component.network.ext.commonCatch
-import com.linwei.cams.framework.mvi.ext.FetchStatus
-import com.linwei.cams.framework.mvi.ext.asLiveData
-import com.linwei.cams.framework.mvi.ext.setState
+import com.linwei.cams.component.network.ktx.commonCatch
+import com.linwei.cams.framework.mvi.ktx.FetchStatus
+import com.linwei.cams.framework.mvi.ktx.asLiveData
+import com.linwei.cams.framework.mvi.ktx.setState
 import com.linwei.cams.framework.mvi.mvi.ViewModelFactory
 import com.linwei.cams.framework.mvi.mvi.intent.MviViewModel
 import com.linwei.cams.framework.mvi.mvi.intent.StatusCode
 import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
+import com.linwei.cams.module.project.provider.ProjectProviderImpl
 import com.linwei.cams.module.project.ui.project.mvi.model.MviViewState
 import com.linwei.cams.service.project.provider.ProjectProvider
 import com.linwei.cams.service.project.provider.ProjectProviderHelper
-import io.reactivex.rxjava3.disposables.Disposable
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProjectViewModel : MviViewModel() {
+@HiltViewModel
+class ProjectViewModel @Inject constructor() :
+    MviViewModel() {
 
     private val _viewStates: MutableLiveData<MviViewState> = MutableLiveData(MviViewState())
     val viewState = _viewStates.asLiveData()
 
-    private val mProjectProvider: ProjectProvider by lazy {
-        ProjectProviderHelper.getProjectProvider()
-    }
-
     init {
         ViewModelFactory.getInstance()
     }
+
+    @Inject
+    lateinit var mProjectProvider: ProjectProviderImpl
 
     /**
      * 获取项目树数据

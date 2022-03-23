@@ -26,16 +26,15 @@ ext {
             recyclerViewAdapterVersion: "3.0.4",
             coilVersion               : "1.4.0",
             gsonVersion               : "2.8.7",
-            hiltVersion               : "2.40.1",
+            hiltVersion               : "2.41",
             eventbusVersion           : "3.2.0",
             mmkvVersion               : "1.2.9",
-            hiltAndroidVersion        : "1.0.0",
             stateLayoutVersion        : "1.2.0",
             lifecycleVersion          : "2.4.1",
             coroutinesVersion         : "1.5.2",
             autosizeVersion           : "v1.2.1",
             permissionXVersion        : "1.4.0",
-            leakcanaryAndroidVersion  : "2.7.0",
+            leakcanaryAndroidVersion  : "2.8.1",
             autoServiceVersion        : "1.0",
             tencentBuglyVersion       : "3.3.9",
             tencentBuglyNativeVersion : "3.8.0",
@@ -149,7 +148,10 @@ ext {
             //hilt
             "hilt-android"                        : "com.google.dagger:hilt-android:${version.hiltVersion}",
             "hilt-compiler"                       : "com.google.dagger:hilt-compiler:${version.hiltVersion}",
-            "hilt-android-compiler"               : "androidx.hilt:hilt-compiler:${version.hiltAndroidVersion}",
+            // Hilt testing dependency
+            "hilt-android-testing"                : "com.google.dagger:hilt-android-testing:${version.hiltVersion}",
+            // Make Hilt generate code in the androidTest folder
+            "hilt-android-compiler"               : "com.google.dagger:hilt-android-compiler:${version.hiltVersion}",
 
             //----------------------------------------Coroutines-------------------------------------------------------------
             "kotlinx-coroutines-core"             : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${version.coroutinesVersion}",

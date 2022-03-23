@@ -1,9 +1,8 @@
 package com.linwei.cams.module.project.ui.project.mvi.view
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import com.linwei.cams.framework.mvi.ext.FetchStatus
-import com.linwei.cams.framework.mvi.ext.observeState
+import com.linwei.cams.framework.mvi.ktx.FetchStatus
+import com.linwei.cams.framework.mvi.ktx.observeState
 import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
 import com.linwei.cams.framework.mvi.mvi.view.MviView
 import com.linwei.cams.module.project.ui.project.mvi.intent.ProjectViewModel

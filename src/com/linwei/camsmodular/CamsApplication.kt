@@ -1,46 +1,18 @@
 package com.linwei.camsmodular
 
-import android.content.Context
-import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
-import com.linwei.cams.component.common.opensource.ARouterManager
-import com.linwei.cams.module.home.HomeApplicationDelegate
+import com.linwei.cams.component.common.base.CommonBaseApplication
 import dagger.hilt.android.HiltAndroidApp
+import org.greenrobot.eventbus.EventBus
 
 @HiltAndroidApp
-class CamsApplication : MultiDexApplication() {
-
-    private val mHomeApplicationDelegate by lazy {
-        HomeApplicationDelegate()
-    }
-
-    override fun attachBaseContext(context: Context) {
-        super.attachBaseContext(context)
-        mHomeApplicationDelegate.attachBaseContext(context)
-    }
+class CamsApplication : CommonBaseApplication() {
 
     override fun onCreate() {
+        // 开启EventBusAPT,优化反射效率 当组件作为App运行时需要将添加的Index注释掉 因为找不到对应的类了
+        EventBus
+            .builder()
+//            .addIndex(MainEventIndex())
+            .installDefaultEventBus()
         super.onCreate()
-        MultiDex.install(this)
-
-        ARouterManager.init(this)
-
-        mHomeApplicationDelegate.onCreate(this)
-    }
-
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-        mHomeApplicationDelegate.onTrimMemory(level)
-    }
-
-    override fun onTerminate() {
-        super.onTerminate()
-        ARouterManager.destroy()
-        mHomeApplicationDelegate.onTerminate(this)
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        mHomeApplicationDelegate.onLowMemory(this)
     }
 }

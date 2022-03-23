@@ -1,9 +1,9 @@
 package com.linwei.cams.framework.mvi.mvi.intent
 
 import androidx.lifecycle.*
-import com.linwei.cams.framework.mvi.ext.asLiveData
-import com.linwei.cams.framework.mvi.ext.setEvent
-import com.linwei.cams.framework.mvi.ext.setPostEvent
+import com.linwei.cams.framework.mvi.ktx.asLiveData
+import com.linwei.cams.framework.mvi.ktx.setEvent
+import com.linwei.cams.framework.mvi.ktx.setPostEvent
 import com.linwei.cams.framework.mvi.mvi.intent.livedata.StatusListLiveEvent
 import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
 

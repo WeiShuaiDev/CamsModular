@@ -8,7 +8,7 @@ import com.linwei.cams.component.network.ApiClient
 import com.linwei.cams.component.network.callback.ErrorConsumer
 import com.linwei.cams.component.network.callback.RxJavaCallback
 import com.linwei.cams.component.network.exception.ApiException
-import com.linwei.cams.component.network.ext.execute
+import com.linwei.cams.component.network.ktx.execute
 import com.linwei.cams.component.network.transformer.ResponseTransformer
 import com.linwei.cams.module.home.http.ApiServiceWrap
 import com.linwei.cams.service.base.ErrorMessage

@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.viewbinding.ViewBinding
 import com.linwei.cams.component.common.base.CommonBaseFragment
-import com.linwei.cams.component.common.ext.snackBar
-import com.linwei.cams.component.common.ext.toast
+import com.linwei.cams.component.common.ktx.snackBar
+import com.linwei.cams.component.common.utils.toast
 import com.linwei.cams.component.mvvm.mvvm.ViewModelDelegate
 import com.linwei.cams.component.mvvm.mvvm.view.MvvmView
 import com.linwei.cams.component.mvvm.mvvm.viewmodel.MvvmViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.schedulers.Schedulers
+import com.quyunshuo.androidbaseframemvvm.base.utils.network.AutoRegisterNetListener
+import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateChangeListener
+import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkTypeEnum
 
 /**
  * ---------------------------------------------------------------------
@@ -26,14 +26,16 @@ import io.reactivex.rxjava3.schedulers.Schedulers
  *-----------------------------------------------------------------------
  */
 abstract class MvvmBaseFragment<VM : MvvmViewModel> : CommonBaseFragment<ViewBinding>(),
-    ViewModelDelegate<VM>, MvvmView<VM> {
+    ViewModelDelegate<VM>, MvvmView<VM>, NetworkStateChangeListener {
 
     protected var mViewModel: VM? = null
+
+    protected var mAutoRegisterNet: AutoRegisterNetListener? = null
 
     override fun onViewCreatedExpand(view: View, savedInstanceState: Bundle?) {
         super.onViewCreatedExpand(view, savedInstanceState)
         initViewModel()
-
+        initNetworkListener()
     }
 
     /**
@@ -48,6 +50,17 @@ abstract class MvvmBaseFragment<VM : MvvmViewModel> : CommonBaseFragment<ViewBin
         if (mViewModel != null) {
             lifecycle.addObserver(mViewModel!!)
         }
+    }
+
+    /**
+     * 初始化网络状态监听
+     * @return Unit
+     */
+    private fun initNetworkListener() {
+        if (mAutoRegisterNet == null) {
+            mAutoRegisterNet = AutoRegisterNetListener(this)
+        }
+        lifecycle.addObserver(mAutoRegisterNet!!)
     }
 
     /**
@@ -96,8 +109,15 @@ abstract class MvvmBaseFragment<VM : MvvmViewModel> : CommonBaseFragment<ViewBin
     override fun dismissLoadingDialog() {
     }
 
-    override fun showToast(message: String?) {
-        activity?.toast(message)
+    override fun showToast(message: String?) = toast(message)
+
+    override fun networkConnectChange(isConnected: Boolean) {
+        if (!isConnected) {
+            toast("网络出现问题~~")
+        }
+    }
+
+    override fun networkTypeChange(type: NetworkTypeEnum) {
     }
 
     /**
@@ -112,8 +132,13 @@ abstract class MvvmBaseFragment<VM : MvvmViewModel> : CommonBaseFragment<ViewBin
     override fun onDestroy() {
         super.onDestroy()
         mViewModel?.let {
-            lifecycle.removeObserver(mViewModel!!)
+            lifecycle.removeObserver(it)
             mViewModel = null
+        }
+
+        mAutoRegisterNet?.let {
+            lifecycle.removeObserver(it)
+            mAutoRegisterNet = null
         }
     }
 

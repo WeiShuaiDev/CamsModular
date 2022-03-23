@@ -6,14 +6,14 @@
     tools:context=".ui.home.HomeActivity"
     android:orientation="vertical">
     <Button
-        android:id="@+id/btnStart"
+        android:id="@+id/home_start_btn"
         android:text="跳转到HomeDetailActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
 
     <TextView
-        android:id="@+id/tvHomeTitle"
+        android:id="@+id/home_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -21,7 +21,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tvHomeContent"
+        android:id="@+id/home_content_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"

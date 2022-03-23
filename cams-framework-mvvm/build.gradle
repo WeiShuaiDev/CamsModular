@@ -9,4 +9,6 @@ android {
 
 dependencies {
     api project(':cams-component-common')
+
+    implementation project(':cams-component-network')
 }

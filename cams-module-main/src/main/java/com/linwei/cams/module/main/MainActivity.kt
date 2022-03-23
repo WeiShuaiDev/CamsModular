@@ -2,7 +2,7 @@ package com.linwei.cams.module.main
 
 import com.alibaba.android.arouter.launcher.ARouter
 import com.linwei.cams.component.common.base.CommonBaseActivity
-import com.linwei.cams.component.common.ext.addFragment
+import com.linwei.cams.component.common.ktx.addFragment
 import com.linwei.cams.module.main.databinding.MainActivityMainBinding
 import com.linwei.cams.service.home.provider.HomeProviderHelper
 import com.linwei.cams.service.mine.MineRouterTable

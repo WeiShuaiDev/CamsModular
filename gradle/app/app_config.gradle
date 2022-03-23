@@ -1,5 +1,6 @@
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -12,15 +13,17 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexKeepProguard file("multidexKeep.pro")
         multiDexEnabled true
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                //Hilt plugin 版本兼容问题，这里需要使用arguments+=
+                arguments += [AROUTER_MODULE_NAME: project.getName()]
             }
         }
         ndk {
-            abiFilters 'armeabi', 'x86'
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
     }
 
@@ -68,13 +71,13 @@ kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
+    correctErrorTypes true
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     /*ARouter*/
-    implementation rootProject.ext.dependencies["arouter-api"]
     kapt rootProject.ext.dependencies["arouter-compiler"]
     /*Hilt*/
     implementation rootProject.ext.dependencies["hilt-android"]

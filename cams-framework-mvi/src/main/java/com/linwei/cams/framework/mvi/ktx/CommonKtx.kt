@@ -1,4 +1,4 @@
-package com.linwei.cams.framework.mvi.ext
+package com.linwei.cams.framework.mvi.ktx
 
 import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.LifecycleOwner

@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-class Preference<T>(val context: Context, val name: String, val default: T) :
+class SharePreferenceUtils<T>(val context: Context, val name: String, val default: T) :
     ReadWriteProperty<Any?, T> {
     private val ref: SharedPreferences by lazy {
         context.getSharedPreferences(

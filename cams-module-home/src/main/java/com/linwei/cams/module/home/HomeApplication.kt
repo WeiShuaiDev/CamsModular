@@ -6,7 +6,7 @@ import android.content.Context
 import com.linwei.cams.component.common.opensource.ARouterManager
 
 class HomeApplication : Application() {
-    private lateinit var mHomeApplicationDelegate: HomeApplicationDelegate
+    private lateinit var mHomeApplicationDelegate: HomeAppDelegate
 
     companion object {
         @SuppressLint("StaticFieldLeak")
@@ -16,7 +16,7 @@ class HomeApplication : Application() {
     override fun attachBaseContext(context: Context) {
         super.attachBaseContext(context)
         mContext = context
-        mHomeApplicationDelegate = HomeApplicationDelegate()
+        mHomeApplicationDelegate = HomeAppDelegate()
     }
 
     override fun onCreate() {

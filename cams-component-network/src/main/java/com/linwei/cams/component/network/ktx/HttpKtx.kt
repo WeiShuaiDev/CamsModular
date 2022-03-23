@@ -1,4 +1,4 @@
-package com.linwei.cams.component.network.ext
+package com.linwei.cams.component.network.ktx
 
 import com.linwei.cams.component.network.callback.RxJavaCallback
 import com.linwei.cams.component.network.model.ResponseData

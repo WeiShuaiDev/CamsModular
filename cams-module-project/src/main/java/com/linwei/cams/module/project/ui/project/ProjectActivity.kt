@@ -3,12 +3,18 @@ package com.linwei.cams.module.project.ui.project
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.linwei.cams.framework.mvi.base.MviBaseActivity
 import com.linwei.cams.module.project.databinding.ProjectActivityProjectBinding
+import com.linwei.cams.module.project.http.ApiService
 import com.linwei.cams.module.project.ui.project.mvi.intent.ProjectViewModel
 import com.linwei.cams.module.project.ui.project.mvi.view.ProjectView
 import com.linwei.cams.service.project.ProjectRouterTable
 import com.linwei.cams.service.project.model.ProjectTreeBean
 import com.linwei.cams.service.project.model.ProjectTreeDetailsBean
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 @Route(path = ProjectRouterTable.PATH_ACTIVITY_PROJECT)
 class ProjectActivity : MviBaseActivity<ProjectActivityProjectBinding, ProjectViewModel>(),
     ProjectView {

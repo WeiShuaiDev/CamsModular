@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.linwei.cams.component.common.app.ActivityLifecycleCallbacksImpl
 import com.linwei.cams.component.common.app.AppBindModuleDelegate
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -13,7 +14,9 @@ import kotlinx.coroutines.launch
 import java.lang.ref.SoftReference
 import kotlin.system.measureTimeMillis
 
+@HiltAndroidApp
 open class CommonBaseApplication : MultiDexApplication() {
+
     private val mCoroutineScope by lazy { MainScope() }
 
     private val mLoadModuleProxy by lazy { AppBindModuleDelegate() }

@@ -3,7 +3,7 @@
     package="com.linwei.cams.module.publis">
 
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name="com.linwei.cams.component.common.base.CommonBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/publis_ic_launcher"
         android:label="@string/publis_app_name"

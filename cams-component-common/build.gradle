@@ -74,6 +74,7 @@ dependencies {
     //Hilt
     api rootProject.ext.dependencies["hilt-android"]
     kapt rootProject.ext.dependencies["hilt-compiler"]
+    kapt rootProject.ext.dependencies["hilt-androidx-compiler"]
 
     //Coroutines
     api rootProject.ext.dependencies["kotlinx-coroutines-core"]

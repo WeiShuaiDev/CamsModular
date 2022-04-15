@@ -1,10 +1,9 @@
 package com.linwei.camsmodular
 
 import com.linwei.cams.component.common.base.CommonBaseApplication
-import dagger.hilt.android.HiltAndroidApp
 import org.greenrobot.eventbus.EventBus
 
-@HiltAndroidApp
+
 class CamsApplication : CommonBaseApplication() {
 
     override fun onCreate() {

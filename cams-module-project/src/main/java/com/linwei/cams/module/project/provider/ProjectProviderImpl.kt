@@ -3,10 +3,8 @@ package com.linwei.cams.module.project.provider
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.linwei.cams.component.common.global.PageState
-import com.linwei.cams.component.network.ApiClient
 import com.linwei.cams.component.network.ApiConstants
 import com.linwei.cams.module.project.http.ApiService
-import com.linwei.cams.module.project.http.ApiServiceWrap
 import com.linwei.cams.service.project.ProjectRouterTable
 import com.linwei.cams.service.project.model.ProjectTreeBean
 import com.linwei.cams.service.project.model.ProjectTreeDetailsBean
@@ -15,7 +13,7 @@ import java.lang.Exception
 import javax.inject.Inject
 
 @Route(path = ProjectRouterTable.PATH_SERVICE_PROJECT)
-class ProjectProviderImpl @Inject constructor() : ProjectProvider {
+class ProjectProviderImpl @Inject constructor(private val apiService:ApiService) : ProjectProvider {
 
     private lateinit var mContext: Context
 
@@ -23,11 +21,9 @@ class ProjectProviderImpl @Inject constructor() : ProjectProvider {
         mContext = context
     }
 
-    private val mApi:ApiService= ApiClient.getInstance().getService(ApiServiceWrap())
-
     override suspend fun fetchProjectTreeData(): PageState<List<ProjectTreeBean>> {
         val projectTreeData = try {
-            mApi.getProjectTreeData()
+            apiService.getProjectTreeData()
         } catch (e: Exception) {
             return PageState.Error(e)
         }
@@ -44,7 +40,7 @@ class ProjectProviderImpl @Inject constructor() : ProjectProvider {
 
     override suspend fun fetchProjectTreeDetailsData(): ProjectTreeDetailsBean {
         val projectTreeDetailsData =
-            mApi.getProjectTreeDetailsData()
+            apiService.getProjectTreeDetailsData()
 
         projectTreeDetailsData.takeIf { it.errorCode == ApiConstants.REQUEST_SUCCESS }?.apply {
             this.data?.let {

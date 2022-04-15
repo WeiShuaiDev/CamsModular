@@ -9,9 +9,13 @@ import com.linwei.cams.component.mvp.mvp.model.IMvpModel
 import com.linwei.cams.component.mvp.mvp.presenter.MvpPresenter
 import com.linwei.cams.component.mvp.mvp.view.IMvpView
 import com.linwei.cams.module.home.databinding.HomeActivityHomeDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeDetailsActivity :
     MvpBaseActivity<HomeActivityHomeDetailsBinding, MvpPresenter<IMvpView, IMvpModel>>() {
+
+    override fun hasInjectARouter(): Boolean = true
 
     override fun initView() {
         val name = intent.getExtra("name", "没有名称") as String

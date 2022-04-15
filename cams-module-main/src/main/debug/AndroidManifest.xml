@@ -3,7 +3,7 @@
     package="com.linwei.cams.module.main">
 
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name="com.linwei.cams.component.common.base.CommonBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/main_ic_launcher"
         android:label="@string/main_app_name"

@@ -10,6 +10,7 @@ import com.linwei.cams.component.network.callback.RxJavaCallback
 import com.linwei.cams.component.network.exception.ApiException
 import com.linwei.cams.component.network.ktx.execute
 import com.linwei.cams.component.network.transformer.ResponseTransformer
+import com.linwei.cams.module.home.http.ApiService
 import com.linwei.cams.module.home.http.ApiServiceWrap
 import com.linwei.cams.service.base.ErrorMessage
 import com.linwei.cams.service.base.callback.ResponseCallback
@@ -17,10 +18,11 @@ import com.linwei.cams.service.home.HomeRouterTable
 import com.linwei.cams.service.home.model.BannerBean
 import com.linwei.cams.service.home.model.HomeBean
 import com.linwei.cams.service.home.provider.HomeProvider
+import javax.inject.Inject
 
 
 @Route(path = HomeRouterTable.PATH_SERVICE_HOME)
-class HomeProviderImpl : HomeProvider {
+class HomeProviderImpl @Inject constructor(private val apiService: ApiService) : HomeProvider {
     private lateinit var mContext: Context
 
     override fun init(context: Context) {

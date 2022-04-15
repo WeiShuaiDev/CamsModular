@@ -3,7 +3,7 @@
     package="com.linwei.cams.module.square">
 
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name="com.linwei.cams.component.common.base.CommonBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/square_ic_launcher"
         android:label="@string/square_app_name"

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -52,6 +53,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    /*Hilt*/
+    implementation rootProject.ext.dependencies["hilt-android"]
+    kapt rootProject.ext.dependencies["hilt-compiler"]
+    kapt rootProject.ext.dependencies["hilt-androidx-compiler"]
 
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation rootProject.ext.dependencies["test-junit"]

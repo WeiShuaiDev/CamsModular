@@ -90,6 +90,7 @@ dependencies {
     /*Hilt*/
     implementation rootProject.ext.dependencies["hilt-android"]
     kapt rootProject.ext.dependencies["hilt-compiler"]
+    kapt rootProject.ext.dependencies["hilt-androidx-compiler"]
 
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation rootProject.ext.dependencies["test-junit"]

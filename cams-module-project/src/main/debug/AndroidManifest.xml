@@ -3,7 +3,7 @@
     package="com.linwei.cams.module.project">
 
     <application
-        android:name=".ProjectApplication"
+        android:name="com.linwei.cams.component.common.base.CommonBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/project_ic_launcher"
         android:label="@string/project_app_name"

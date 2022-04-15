@@ -13,7 +13,9 @@ import com.linwei.cams.module.home.ui.home.presenter.HomePresenter
 import com.linwei.cams.service.home.HomeRouterTable
 import com.linwei.cams.service.home.model.BannerBean
 import com.linwei.cams.service.home.model.HomeBean
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 @Route(path = HomeRouterTable.PATH_ACTIVITY_HOME)
 class HomeActivity : MvpBaseActivity<HomeActivityHomeBinding, HomePresenter>(), IHomeView {
 

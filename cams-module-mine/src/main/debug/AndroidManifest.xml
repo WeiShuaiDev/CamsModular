@@ -3,7 +3,7 @@
     package="com.linwei.cams.module.mine">
 
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name="com.linwei.cams.component.common.base.CommonBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/mine_ic_launcher"
         android:label="@string/mine_app_name"

@@ -1,8 +1,8 @@
-package com.linwei.cams.module.project.di
+package com.linwei.cams.module.home.di
 
 import com.linwei.cams.component.network.ApiClient
-import com.linwei.cams.module.project.http.ApiService
-import com.linwei.cams.module.project.http.ApiServiceWrap
+import com.linwei.cams.module.home.http.ApiService
+import com.linwei.cams.module.home.http.ApiServiceWrap
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,10 +11,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DiProjectModule {
+object DiHomeModule {
 
     /**
-     * Project模块的[ApiService]依赖提供方法
+     * Home模块的[ApiService]依赖提供方法
      *
      * @param apiServiceWrap ApiServiceWrap
      * @return ApiService

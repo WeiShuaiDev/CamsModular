@@ -3,7 +3,7 @@
     package="com.linwei.cams.module.login">
 
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name="com.linwei.cams.component.common.base.CommonBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/login_ic_launcher"
         android:label="@string/login_app_name"

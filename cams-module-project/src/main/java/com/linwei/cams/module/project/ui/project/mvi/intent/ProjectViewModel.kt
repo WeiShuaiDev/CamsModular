@@ -13,8 +13,6 @@ import com.linwei.cams.framework.mvi.mvi.intent.StatusCode
 import com.linwei.cams.framework.mvi.mvi.model.MviViewEvent
 import com.linwei.cams.module.project.provider.ProjectProviderImpl
 import com.linwei.cams.module.project.ui.project.mvi.model.MviViewState
-import com.linwei.cams.service.project.provider.ProjectProvider
-import com.linwei.cams.service.project.provider.ProjectProviderHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -24,7 +22,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProjectViewModel @Inject constructor() :
+class ProjectViewModel @Inject constructor(private val projectProvider:ProjectProviderImpl) :
     MviViewModel() {
 
     private val _viewStates: MutableLiveData<MviViewState> = MutableLiveData(MviViewState())
@@ -33,9 +31,6 @@ class ProjectViewModel @Inject constructor() :
     init {
         ViewModelFactory.getInstance()
     }
-
-    @Inject
-    lateinit var mProjectProvider: ProjectProviderImpl
 
     /**
      * 获取项目树数据
@@ -46,7 +41,7 @@ class ProjectViewModel @Inject constructor() :
         }
 
         viewModelScope.launch {
-            when (val result = mProjectProvider.fetchProjectTreeData()) {
+            when (val result = projectProvider.fetchProjectTreeData()) {
                 is PageState.Error -> {
                     _viewStates.setState {
                         copy(fetchStatus = FetchStatus.NotFetched)
@@ -68,7 +63,7 @@ class ProjectViewModel @Inject constructor() :
     fun fetchProjectTreeDetailsData() {
         viewModelScope.launch {
             flow {
-                emit(mProjectProvider.fetchProjectTreeDetailsData())
+                emit(projectProvider.fetchProjectTreeDetailsData())
             }.onStart {
                 _viewStates.setState { copy(fetchStatus = FetchStatus.Fetching) }
             }.onEach {

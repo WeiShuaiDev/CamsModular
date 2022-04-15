@@ -5,13 +5,13 @@ import com.linwei.cams.component.mvvm.base.MvvmBaseActivity
 import com.linwei.cams.module.publis.R
 import com.linwei.cams.module.publis.ui.publis.viewmodel.PublisViewModel
 import com.linwei.cams.service.publis.PublisRouterTable
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 @Route(path = PublisRouterTable.PATH_ACTIVITY_PUBLIS)
 class PublisActivity : MvvmBaseActivity<PublisViewModel>() {
 
     override fun hasInjectARouter(): Boolean = true
-
-    override fun hasViewBinding(): Boolean = true
 
     override fun getRootLayoutId(): Int = R.layout.publis_activity_publis
 

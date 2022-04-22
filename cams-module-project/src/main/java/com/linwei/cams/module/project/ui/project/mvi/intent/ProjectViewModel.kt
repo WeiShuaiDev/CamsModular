@@ -28,10 +28,6 @@ class ProjectViewModel @Inject constructor(private val projectProvider:ProjectPr
     private val _viewStates: MutableLiveData<MviViewState> = MutableLiveData(MviViewState())
     val viewState = _viewStates.asLiveData()
 
-    init {
-        ViewModelFactory.getInstance()
-    }
-
     /**
      * 获取项目树数据
      */

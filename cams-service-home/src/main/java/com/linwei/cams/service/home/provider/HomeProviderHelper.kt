@@ -8,6 +8,6 @@ object HomeProviderHelper {
     /**
      * HomeProvider
      */
-    fun getHomeProvider(): HomeProvider =
-        ARouter.getInstance().build(HomeRouterTable.PATH_SERVICE_HOME).navigation() as HomeProvider
+    fun getHomeProvider(): HomeProvider? =
+        ARouter.getInstance().build(HomeRouterTable.PATH_SERVICE_HOME).navigation() as HomeProvider?
 }

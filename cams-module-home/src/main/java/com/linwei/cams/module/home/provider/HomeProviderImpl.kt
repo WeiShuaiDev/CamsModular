@@ -10,7 +10,6 @@ import com.linwei.cams.component.network.callback.RxJavaCallback
 import com.linwei.cams.component.network.exception.ApiException
 import com.linwei.cams.component.network.ktx.execute
 import com.linwei.cams.component.network.transformer.ResponseTransformer
-import com.linwei.cams.module.home.http.ApiService
 import com.linwei.cams.module.home.http.ApiServiceWrap
 import com.linwei.cams.service.base.ErrorMessage
 import com.linwei.cams.service.base.callback.ResponseCallback
@@ -18,22 +17,23 @@ import com.linwei.cams.service.home.HomeRouterTable
 import com.linwei.cams.service.home.model.BannerBean
 import com.linwei.cams.service.home.model.HomeBean
 import com.linwei.cams.service.home.provider.HomeProvider
-import javax.inject.Inject
 
 
 @Route(path = HomeRouterTable.PATH_SERVICE_HOME)
-class HomeProviderImpl @Inject constructor(private val apiService: ApiService) : HomeProvider {
+class HomeProviderImpl : HomeProvider {
     private lateinit var mContext: Context
 
     override fun init(context: Context) {
         mContext = context
     }
 
+    private val mApiService = ApiClient.getInstance().getService(ApiServiceWrap())
+
     override fun fetchHomeData(
         page: Int,
         callback: ResponseCallback<HomeBean>
     ) {
-        ApiClient.getInstance().getService(ApiServiceWrap()).getArticleListData(1)
+        mApiService.getArticleListData(1)
             .execute(object : RxJavaCallback<HomeBean>() {
 
                 override fun onSuccess(code: Int?, data: HomeBean) {
@@ -49,7 +49,7 @@ class HomeProviderImpl @Inject constructor(private val apiService: ApiService) :
     }
 
     override fun fetchBannerData(callback: ResponseCallback<List<BannerBean>>) {
-        ApiClient.getInstance().getService(ApiServiceWrap()).getBannerListData()
+        mApiService.getBannerListData()
             .compose(ResponseTransformer.obtain())
             .subscribe({ data ->
                 callback.onSuccess(data)

@@ -7,6 +7,6 @@ object ProjectProviderHelper {
     /**
      * ProjectProvider
      */
-    fun getProjectProvider(): ProjectProvider =
-        ARouter.getInstance().build(ProjectRouterTable.PATH_SERVICE_PROJECT).navigation() as ProjectProvider
+    fun getProjectProvider(): ProjectProvider?=
+        ARouter.getInstance().build(ProjectRouterTable.PATH_SERVICE_PROJECT).navigation() as ProjectProvider?
 }

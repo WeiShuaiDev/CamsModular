@@ -5,18 +5,11 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/home_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Home 请求信息:"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/home_content_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="HomeFragment"
         android:gravity="center"
-        android:textSize="16sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

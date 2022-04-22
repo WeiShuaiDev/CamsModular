@@ -5,7 +5,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.linwei.cams.component.common.base.CommonBaseFragment
 import com.linwei.cams.module.home.databinding.HomeFragmentHomeBinding
 import com.linwei.cams.service.home.HomeRouterTable
-import dagger.hilt.android.AndroidEntryPoint
 
 @Route(path = HomeRouterTable.PATH_FRAGMENT_HOME)
 class HomeFragment : CommonBaseFragment<HomeFragmentHomeBinding>() {

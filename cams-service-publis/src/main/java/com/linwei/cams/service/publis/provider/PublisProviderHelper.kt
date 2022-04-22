@@ -7,6 +7,6 @@ object PublisProviderHelper {
     /**
      * PublisProvider
      */
-    fun getPublisProvider(): PublisProvider =
-        ARouter.getInstance().build(PublisRouterTable.PATH_SERVICE_PUBLIS).navigation() as PublisProvider
+    fun getPublisProvider(): PublisProvider? =
+        ARouter.getInstance().build(PublisRouterTable.PATH_SERVICE_PUBLIS).navigation() as PublisProvider?
 }

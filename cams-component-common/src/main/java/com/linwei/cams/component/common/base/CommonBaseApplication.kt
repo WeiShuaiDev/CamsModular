@@ -75,4 +75,15 @@ open class CommonBaseApplication : MultiDexApplication() {
         mLoadModuleProxy.onTerminate(this)
         mCoroutineScope.cancel()
     }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mLoadModuleProxy.onLowMemory(this)
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        mLoadModuleProxy.onTrimMemory(level)
+    }
+
 }

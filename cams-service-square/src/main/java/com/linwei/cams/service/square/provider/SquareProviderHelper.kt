@@ -7,6 +7,6 @@ object SquareProviderHelper {
     /**
      * SquareProvider
      */
-    fun getSquareProvider(): SquareProvider =
-        ARouter.getInstance().build(SquareRouterTable.PATH_SERVICE_SQUARE).navigation() as SquareProvider
+    fun getSquareProvider(): SquareProvider? =
+        ARouter.getInstance().build(SquareRouterTable.PATH_SERVICE_SQUARE).navigation() as SquareProvider?
 }

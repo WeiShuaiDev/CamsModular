@@ -1,6 +1,7 @@
 package com.linwei.cams.component.mvvm.base
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.viewbinding.ViewBinding
@@ -13,6 +14,7 @@ import com.linwei.cams.component.mvvm.mvvm.viewmodel.MvvmViewModel
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.AutoRegisterNetListener
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkStateChangeListener
 import com.quyunshuo.androidbaseframemvvm.base.utils.network.NetworkTypeEnum
+import kotlin.reflect.KClass
 
 /**
  * ---------------------------------------------------------------------
@@ -75,15 +77,18 @@ abstract class MvvmBaseActivity<VM : MvvmViewModel> : CommonBaseActivity<ViewBin
      * @return  [ViewModel]
      */
     private fun obtainViewModel(store: ViewModelStore, vmClass: Class<VM>): VM =
-        createViewModelProvider(store)[vmClass]
+        createViewModelProvider(store, vmClass.kotlin).value
 
     /**
      * 创建 [ViewModelProvider] 对象
      * @param store [ViewModelStore]
      * @return [ViewModelProvider] 对象
      */
-    private fun createViewModelProvider(store: ViewModelStore): ViewModelProvider =
-        ViewModelProvider(store, mViewModelFactory)
+    private fun createViewModelProvider(store: ViewModelStore, vmClass: KClass<VM>): Lazy<VM> {
+        val factoryPromise = { defaultViewModelProviderFactory }
+        return ViewModelLazy(vmClass, { store }, factoryPromise)
+
+    }
 
     /**
      * 获取 [ViewModelProvider.Factory] 对象

@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.linwei.cams.component.common.base.CommonBaseActivity
 import com.linwei.cams.component.common.ktx.addFragment
 import com.linwei.cams.module.main.databinding.MainActivityMainBinding
+import com.linwei.cams.service.home.HomeRouterTable
 import com.linwei.cams.service.home.provider.HomeProviderHelper
 import com.linwei.cams.service.mine.MineRouterTable
 import com.linwei.cams.service.project.ProjectRouterTable
@@ -13,6 +14,9 @@ import com.linwei.cams.service.square.SquareRouterTable
 class MainActivity : CommonBaseActivity<MainActivityMainBinding>() {
 
     override fun initView() {
+      HomeProviderHelper.getHomeProvider()?.routerHomeFragment()?.let {
+          supportFragmentManager.addFragment(it, R.id.main_container_fl)
+      }
     }
 
     override fun initData() {
@@ -20,11 +24,10 @@ class MainActivity : CommonBaseActivity<MainActivityMainBinding>() {
 
     override fun initEvent() {
         mViewBinding.mainHomeTv.setOnClickListener {
-            //ARouter.getInstance().build(HomeRouterTable.PATH_ACTIVITY_HOME)
-            //    .withString("title", "首页")
-            //    .navigation()
-            val homeFragment = HomeProviderHelper.getHomeProvider().routerHomeFragment()
-            supportFragmentManager.addFragment(homeFragment, R.id.main_container_fl)
+            ARouter.getInstance().build(HomeRouterTable.PATH_ACTIVITY_HOME)
+                .withString("title", "首页")
+                .navigation()
+
         }
         mViewBinding.mainProjectTv.setOnClickListener {
             ARouter.getInstance().build(ProjectRouterTable.PATH_ACTIVITY_PROJECT)

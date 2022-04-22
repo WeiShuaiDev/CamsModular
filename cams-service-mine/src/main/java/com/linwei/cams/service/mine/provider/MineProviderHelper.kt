@@ -7,6 +7,6 @@ object MineProviderHelper {
     /**
      * MineProvider
      */
-    fun getMineProvider(): MineProvider =
-        ARouter.getInstance().build(MineRouterTable.PATH_SERVICE_MINE).navigation() as MineProvider
+    fun getMineProvider(): MineProvider? =
+        ARouter.getInstance().build(MineRouterTable.PATH_SERVICE_MINE).navigation() as MineProvider?
 }

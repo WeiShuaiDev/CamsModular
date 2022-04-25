@@ -48,6 +48,9 @@ dependencies {
     //AutoSize
     api rootProject.ext.dependencies["autosize"]
 
+    //Xtool
+    api rootProject.ext.dependencies["xtool"]
+
     //BaseRecyclerViewAdapterHelper
     api rootProject.ext.dependencies["baseRecyclerViewAdapterHelper"]
 

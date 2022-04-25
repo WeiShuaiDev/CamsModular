@@ -9,18 +9,18 @@ import com.linwei.cams.component.common.utils.ProcessUtils
 import com.tencent.bugly.crashreport.CrashReport
 
 @AutoService(AppDelegate::class)
-class CommonAppDelegate:AppDelegate {
+class CommonAppDelegate : AppDelegate {
 
-    private lateinit var mContext:Context
+    private lateinit var mContext: Context
 
-    private  lateinit var mApplication:Application
+    private lateinit var mApplication: Application
 
     /**
      * 同[Application.attachBaseContext]
      * @param context [Context]
      */
     override fun onAttachBaseContext(context: Context) {
-        this.mContext=context
+        this.mContext = context
     }
 
     /**
@@ -28,7 +28,7 @@ class CommonAppDelegate:AppDelegate {
      * @param application [Application]
      */
     override fun onCreate(application: Application) {
-        this.mApplication=application
+        this.mApplication = application
     }
 
     /**

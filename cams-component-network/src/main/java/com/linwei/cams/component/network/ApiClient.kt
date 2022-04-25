@@ -3,6 +3,7 @@ package com.linwei.cams.component.network
 import com.linwei.cams.component.network.configuration.ApiConfiguration
 import com.linwei.cams.component.network.intercepter.SignInterceptor
 import com.linwei.cams.component.network.service.ServiceWrap
+import com.linwei.tool.utils.LoggingInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -56,6 +57,7 @@ class ApiClient private constructor(var apiConfiguration: ApiConfiguration?) {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(httpLoggingInterceptor)
         }
+        builder.addNetworkInterceptor(LoggingInterceptor())
         builder.addNetworkInterceptor(SignInterceptor())
         this.mOkHttpClient = builder.build()
     }

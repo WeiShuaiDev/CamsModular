@@ -26,6 +26,8 @@ ext {
             recyclerViewAdapterVersion: "3.0.4",
             coilVersion               : "1.4.0",
             gsonVersion               : "2.8.7",
+            xtoolVersion              : "1.4.0",
+            loganVersion              : "1.1.0",
             hiltVersion               : "2.41",
             hiltAndroidXVersion       : "1.0.0",
             eventbusVersion           : "3.2.0",
@@ -62,8 +64,14 @@ ext {
             "okhttp3"                             : "com.squareup.okhttp3:okhttp:${version.okHttpVersion}",
             "okhttp3-logging-interceptor"         : "com.squareup.okhttp3:logging-interceptor:${version.okHttpVersion}",
 
-            //----------------------------------------GSON-------------------------------------------------------------
+            //----------------------------------------GSON---------------------------------------------------------------
             "gson"                                : "com.google.code.gson:gson:${version.gsonVersion}",
+
+            //----------------------------------------XTOOL---------------------------------------------------------------
+            "xtool"                               : "io.github.weishuaidev:xtool:${version.xtoolVersion}",
+
+            //----------------------------------------LOG-----------------------------------------------------------------
+            "logan"                               : "com.dianping.android.sdk:logan:${version.loganVersion}",
 
             //----------------------------------------RxCache2------------------------------------------------------------
             "rxcache2"                            : "com.github.VictorAlbertos.RxCache:runtime:${version.rxcacheVersion}",

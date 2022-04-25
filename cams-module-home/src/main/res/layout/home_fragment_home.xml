@@ -2,14 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/home_content_tv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="HomeFragment"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="HomeFragment"
         android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/home_start_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="启动XTool悬浮按钮" />
+
+    <Button
+        android:id="@+id/home_crash_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="跳转Crash" />
+
+    <Button
+        android:id="@+id/home_network_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="跳转Network" />
+
 
 </LinearLayout>

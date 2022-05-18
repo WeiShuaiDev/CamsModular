@@ -1,6 +1,7 @@
 package com.linwei.cams.component.common.base
 
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.os.Looper
@@ -149,8 +150,10 @@ abstract class CommonBaseActivity<VB : ViewBinding> : RxAppCompatActivity() {
         // 主要是为了解决 AndroidAutoSize 在横屏切换时导致适配失效的问题
         // 但是 AutoSizeCompat.autoConvertDensity() 对线程做了判断 导致Coil等图片加载框架在子线程访问的时候会异常
         // 所以在这里加了线程的判断 如果是非主线程 就取消单独的适配
+        val res=super.getResources()
+        res.updateConfiguration(Configuration().apply{setToDefaults()},res.displayMetrics)
         if (Looper.myLooper() == Looper.getMainLooper()) {
-            AutoSizeCompat.autoConvertDensityOfGlobal((super.getResources()))
+            AutoSizeCompat.autoConvertDensityOfGlobal((res))
         }
         return super.getResources()
     }

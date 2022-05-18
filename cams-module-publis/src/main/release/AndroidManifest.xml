@@ -5,19 +5,7 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.publis.PublisActivity"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <action android:name="android.intent.action.VIEW" />
-
-                <data
-                    android:host="com.linwei.cams.module.publis"
-                    android:scheme="router" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.publis.PublisActivity"/>
     </application>
 
 </manifest>

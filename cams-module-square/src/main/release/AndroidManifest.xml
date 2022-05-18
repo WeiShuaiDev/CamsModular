@@ -5,19 +5,7 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.SquareActivity"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <action android:name="android.intent.action.VIEW" />
-
-                <data
-                    android:host="com.linwei.cams.module.square"
-                    android:scheme="router" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.SquareActivity"/>
     </application>
 
 </manifest>

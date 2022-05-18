@@ -5,19 +5,7 @@
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
-        <activity android:name=".ui.home.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <action android:name="android.intent.action.VIEW" />
-
-                <data
-                    android:host="com.linwei.cams.module.home"
-                    android:scheme="router" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.home.HomeActivity"/>
         <activity android:name=".ui.HomeDetailsActivity"/>
     </application>
 
